@@ -11,8 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('table_visited', function (Blueprint $table) {
-            $table->id();
+        Schema::create('table_posyandu', function (Blueprint $table) {
+            $table->id('id_posyandu');
+            $table->string('nama_posyandu');
+            $table->string('alamat_posyandu');
+            $table->unsignedBigInteger('id_admin');
+            $table->foreign('id_admin')->references('id_admin')->on('table_admin'); 
             $table->timestamps();
         });
     }
@@ -22,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('table_visited');
+        Schema::dropIfExists('table_posyandu');
     }
 };
