@@ -7,9 +7,9 @@ use App\Models\Jadwal;
 
 class CreateJadwalKegiatanController extends Controller
 {
+    // Membuat Jadwal Kegiatan
     public function store(Request $request)
     {
-        // Memvalidasi data yang masuk
         $validated = $request->validate([
             'nama_kegiatan'    => 'required|string|max:255',
             'jenis_kegiatan'   => 'required|string|max:255',
@@ -18,19 +18,42 @@ class CreateJadwalKegiatanController extends Controller
             'id_posyandu'      => 'required|integer',
         ]);
 
-        // Menyimpan data ke tabel jadwal
-        $jadwal = Jadwal::create([
-            'nama_kegiatan'    => $validated['nama_kegiatan'],
-            'jenis_kegiatan'   => $validated['jenis_kegiatan'],
-            'tanggal_kegiatan' => $validated['tanggal_kegiatan'],
-            'id_petugasKader'  => $validated['id_petugasKader'],
-            'id_posyandu'      => $validated['id_posyandu'],
-        ]);
+        $jadwal = Jadwal::create($validated);
 
-        // Mengembalikan response JSON
         return response()->json([
             'message' => 'Jadwal kegiatan berhasil ditambahkan.',
             'data'    => $jadwal
         ], 201);
+    }
+
+    // Melihat Jadwal Kegiatan
+    public function index()
+    {
+        $jadwals = Jadwal::all();
+        return view('admin-side.jadwal-kegiatan.index', compact('jadwals'));
+    }
+
+    // Memperbaharui Jadwal Kegiatan
+    public function update(Request $request, $id)
+    {
+        $validated = $request->validate([
+            'nama_kegiatan'    => 'required|string|max:255',
+            'jenis_kegiatan'   => 'required|string|max:255',
+            'tanggal_kegiatan' => 'required|date',
+        ]);
+
+        $jadwal = Jadwal::findOrFail($id);
+        $jadwal->update($validated);
+
+        return redirect()->route('jadwal-kegiatan.index')->with('success', 'Jadwal berhasil diperbarui.');
+    }
+
+    // Menghapus Jadwal Kegiatan
+    public function destroy($id)
+    {
+        $jadwal = Jadwal::findOrFail($id);
+        $jadwal->delete();
+
+        return redirect()->route('jadwal-kegiatan.index')->with('success', 'Jadwal berhasil dihapus.');
     }
 }

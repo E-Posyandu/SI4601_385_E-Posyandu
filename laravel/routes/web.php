@@ -1,15 +1,13 @@
-<?php
-
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CreateJadwalKegiatanController;
 
-Route::get('/', function () {
-    return view('index');
-})->name('index');
+// Lihat halaman list jadwal
+Route::get('/admin/jadwal-kegiatan', [CreateJadwalKegiatanController::class, 'index'])->name('jadwal-kegiatan.index');
 
-// Form jadwal kegiatan
-Route::view('/admin/jadwal-kegiatan', 'admin-side.jadwal-kegiatan.index')->name('jadwal-kegiatan.index');
-
-// Menyimpan data jadwal
+// Simpan jadwal baru
 Route::post('/admin/jadwal-kegiatan/store', [CreateJadwalKegiatanController::class, 'store'])->name('jadwal-kegiatan.store');
 
+// Update jadwal
+Route::put('/admin/jadwal-kegiatan/update/{id}', [CreateJadwalKegiatanController::class, 'update'])->name('jadwal-kegiatan.update');
+
+// Hapus jadwal
+Route::delete('/admin/jadwal-kegiatan/delete/{id}', [CreateJadwalKegiatanController::class, 'destroy'])->name('jadwal-kegiatan.destroy');
