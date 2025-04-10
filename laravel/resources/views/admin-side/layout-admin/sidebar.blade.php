@@ -5,17 +5,18 @@
                         <div class="nav">
                             <div class="sb-sidenav-menu-heading"></div>
                             <a class="nav-link {{ request()->routeIs('index') ? 'active' : '' }}" href="{{ route('index') }}">
-                                <div class="sb-nav-link-icon"><i class="fas fa-home"></i></div>
+                                <img src="{{ asset('assets/home.png') }}" alt="Logo" style="height: 25px; margin-right: 8px;">
                                 Dashboard
                             </a>
                             <a class="nav-link" href="{{ route('index') }}">
                                 <img src="{{ asset('assets/user.png') }}" alt="Logo" style="height: 25px; margin-right: 8px;">
                                 Akun Verifikasi
                             </a>
-                            <a class="nav-link" href="{{ route('index') }}">
+                            <a class="nav-link {{ request()->routeIs('Databayi') ? 'active' : '' }}" href="{{ route('Databayi') }}">
                                 <img src="{{ asset('assets/Baby Feet.png') }}" alt="Logo" style="height: 20px; margin-right: 8px;">
                                 Data bayi
                             </a>
+
                             <a class="nav-link" href="{{ route('index') }}">
                                 <img src="{{ asset('assets/Schedule.png') }}" alt="Logo" style="height: 20px; margin-right: 8px;">
                                 Jadwal Kegiatan
