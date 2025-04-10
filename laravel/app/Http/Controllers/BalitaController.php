@@ -6,11 +6,11 @@ use Illuminate\Http\Request;
 use App\Models\balita;
 use App\Models\orangtua;
 
-class babyController extends Controller
+class BalitaController extends Controller
 {
     // fucntion untuk menampilkan data balita
     public function index() {
-        $babies = balita::with('orangtua')->get();
+        $balita = balita::with('orangtua')->get();
         return view('babies', compact('babies'));
     }
 
@@ -41,7 +41,7 @@ class babyController extends Controller
 
     // function untuk edit data balita
     public function edit($id) {
-        $baby = balita::findOrFail($id);
+        $balita = balita::findOrFail($id);
         $orangtuas = orangtua::all();
         return view('edit', compact('baby', 'orangtuas'));
     }
@@ -61,21 +61,21 @@ class babyController extends Controller
             'username' =>'required',
             'password' =>'required'
         ]);
-        $baby = balita::findOrFail($id);
-        $baby->update($request->all());
+        $balita = balita::findOrFail($id);
+        $balita->update($request->all());
         return redirect()->route('babies.index')->with('success', 'Data balita berhasil diupdate');
     }
 
     // function untuk delete data balita
     public function destroy($id) {
-        $baby = balita::findOrFail($id);
-        $baby->delete();
+        $balita = balita::findOrFail($id);
+        $balita->delete();
         return redirect()->route('babies.index')->with('success', 'Data balita berhasil dihapus');
     }
 
     // function untuk menampilkan data balita by Id
     public function show($id) {
-        $baby = balita::findOrFail($id);
+        $balita = balita::findOrFail($id);
         return view('show', compact('baby'));
     }
 }
