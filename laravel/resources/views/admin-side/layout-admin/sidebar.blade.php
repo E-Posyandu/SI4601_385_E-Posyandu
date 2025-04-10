@@ -20,7 +20,7 @@
                                 <img src="{{ asset('assets/Schedule.png') }}" alt="Logo" style="height: 20px; margin-right: 8px;">
                                 Jadwal Kegiatan
                             </a>
-                            <a class="nav-link" href="{{ route('index') }}">
+                            <a class="nav-link" href="{{ route('artikel.index') }}">
                                 <img src="{{ asset('assets/News.png') }}" alt="Logo" style="height: 20px; margin-right: 8px;">
                                 Artikel & Edukasi
                             </a>

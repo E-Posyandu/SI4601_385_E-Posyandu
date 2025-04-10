@@ -1,35 +1,40 @@
-@extends('layout-admin.app')
+@extends('admin-side.layout-admin.app')
 
 @section('content')
-    <div class="container">
-        <h1>Buat Artikel Kesehatan Baru</h1>
+<div class="container" style="max-width: 800px; margin-left: 20px; margin-right: 20px;">
+    <h1 class="mb-4">Artikel Rilis</h1>
 
-        <form action="{{ route('artikel.store') }}" method="POST">
-            @csrf
-            <div class="form-group">
-                <label for="judul">Judul</label>
-                <input type="text" name="judul" id="judul" class="form-control" required>
-            </div>
+    <form action="{{ route('artikel.store') }}" method="POST">
+        @csrf
+        <div class="mb-3">
+            <label for="judul" class="form-label">Judul Artikel</label>
+            <input type="text" name="judul" id="judul" class="form-control" required>
+        </div>
 
-            <div class="form-group">
-                <label for="isi">Isi</label>
-                <textarea name="isi" id="isi" class="form-control" rows="5" required></textarea>
-            </div>
+        <div class="mb-3">
+            <label for="is_show" class="form-label">Tampilkan</label>
+            <input type="checkbox" name="is_show" id="is_show" class="form-check-input">
+        </div>
 
-            <div class="form-group">
-                <label for="author">Penulis</label>
-                <input type="text" name="author" id="author" class="form-control" required>
-            </div>
+        <div class="mb-3">
+            <label for="content" class="form-label">Konten</label>
+            <textarea name="isi" id="content" class="form-control" rows="6" required></textarea>
+        </div>
 
-            <div class="form-group">
-                <label for="is_show">Tampilkan Artikel?</label>
-                <select name="is_show" id="is_show" class="form-control" required>
-                    <option value="1">Ya</option>
-                    <option value="0">Tidak</option>
-                </select>
-            </div>
-
-            <button type="submit" class="btn btn-primary">Simpan Artikel</button>
-        </form>
-    </div>
+        <button type="submit" class="btn btn-primary">Simpan</button>
+    </form>
+</div>
 @endsection
+
+<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+<script>
+    console.log('TinyMCE script loaded');
+    tinymce.init({
+        selector: '#content',
+        plugins: 'advlist autolink lists link image charmap print preview anchor',
+        toolbar: 'undo redo | formatselect | bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | help',
+        setup: function(editor) {
+            console.log('TinyMCE initialized');
+        }
+    });
+</script>
