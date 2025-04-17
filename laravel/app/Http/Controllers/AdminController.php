@@ -8,17 +8,12 @@ use Illuminate\Support\Facades\Session;
 
 class AdminController extends Controller
 {
-    /**
-     * Tampilkan halaman login
-     */
+
     public function showLoginForm()
     {
         return view('login');
     }
 
-    /**
-     * Proses login
-     */
     public function login(Request $request)
     {
         $request->validate([
@@ -30,7 +25,7 @@ class AdminController extends Controller
     
         if ($admin && $request->password === $admin->password) {
             Session::put('admin', $admin);
-            return redirect()->route('index'); // 
+            return redirect()->route('index'); 
         }
     
         return back()->withErrors([
@@ -39,9 +34,6 @@ class AdminController extends Controller
     }
     
 
-    /**
-     * Logout
-     */
     public function logout()
     {
         Session::forget('admin');

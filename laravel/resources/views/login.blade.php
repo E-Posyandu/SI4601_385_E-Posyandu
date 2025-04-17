@@ -7,7 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
-            background-color: #f0f4f8; /* Warna latar belakang yang lebih terang */
+            background-color: #f0f4f8; 
             font-family: Arial, sans-serif;
         }
 
@@ -18,11 +18,11 @@
             box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
             background-color: #ffffff;
             margin-top: 50px;
-            border: 1px solid #dcdfe6; /* Menambahkan border halus */
+            border: 1px solid #dcdfe6; 
         }
 
         .login-card .card-header {
-            background-color: #3f51b5; /* Warna biru untuk header */
+            background-color: #3f51b5;
             color: white;
             padding: 20px;
             text-align: center;
@@ -43,7 +43,7 @@
         }
 
         .btn-primary {
-            background-color: #3f51b5; /* Biru untuk tombol login */
+            background-color: #3f51b5; 
             border: none;
         }
 
