@@ -93,7 +93,7 @@ class BalitaController extends Controller
             ->orderBy('tanggal_penimbangan')
             ->get(['tanggal_penimbangan', 'berat_badan', 'tinggi_badan', 'lingkar_kepala'])
             ->map(function ($item) {
-                $item->bulan = Carbon::parse($item->tanggal_penimbangan)->isoFormat('MMMM YYYY'); // Contoh: "April 2025"
+                $item->bulan = Carbon::parse($item->tanggal_penimbangan)->isoFormat('MMMM YYYY'); 
                 return $item;
             });
 
