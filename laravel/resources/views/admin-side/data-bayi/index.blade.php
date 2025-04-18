@@ -1,17 +1,23 @@
 @extends('admin-side.layout-admin.app')
 
-@section('title', 'Dashboard')
+@section('title', 'Data Bayi')
 
 @section('content')
 <main>
     <div class="container-fluid px-4 mt-4">
         <h3 class="mb-4">Data Balita</h3>
 
+        <form method="GET" action="{{ route('babies.index') }}" class="mb-3">
+            <div class="input-group">
+                <input type="text" name="search" class="form-control" placeholder="Cari nama balita..." value="{{ request('search') }}">
+                <button class="btn btn-primary" type="submit">Cari</button>
+            </div>
+        </form>
+
+
         @if(session('success'))
             <div class="alert alert-success">{{ session('success') }}</div>
         @endif
-
-        <a href="{{ route('babies.create') }}" class="btn btn-primary mb-3">+ Tambah Balita</a>
 
         <div class="card">
             <div class="card-body">
@@ -34,15 +40,10 @@
                                 <td>{{ $baby->nama_balita }}</td>
                                 <td>{{ \Carbon\Carbon::parse($baby->tanggal_lahir)->format('d-m-Y') }}</td>
                                 <td>{{ $baby->jenis_kelamin }}</td>
-                                <td>{{ $baby->tinggi_badan }}</td>
-                                <td>{{ $baby->berat_badan }}</td>
+                                <td>{{ $baby->kunjunganTerakhir?->berat_badan ?? 'Belum ada data' }}</td>
+                                <td>{{ $baby->kunjunganTerakhir?->tinggi_badan ?? 'Belum ada data' }}</td>
                                 <td>
-                                    <a href="{{ route('babies.edit', $baby->id_balita) }}" class="btn btn-sm btn-warning">Edit</a>
-                                    <form action="{{ route('babies.destroy', $baby->id_balita) }}" method="POST" class="d-inline" onsubmit="return confirm('Yakin ingin menghapus data ini?')">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button class="btn btn-sm btn-danger">Hapus</button>
-                                    </form>
+                                    <a href="{{ route('babies.show', $baby->id_balita) }}" class="btn btn-sm btn-info">Lihat Detail</a>
                                 </td>
                             </tr>
                         @empty
