@@ -3,14 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 
-class VerifikasiAkunController extends Controller
+class VerifikasiAdmin extends Controller
 {
     public function index(Request $request)
     {
-        $query = User::where('role', 'user');
+        $query = User::where('role', '!=', 'admin'); // exclude admin accounts
 
         if ($request->has('search')) {
             $search = $request->search;
@@ -22,7 +22,7 @@ class VerifikasiAkunController extends Controller
 
         $users = $query->get();
 
-        return view('admin-side.verifikasi.index', compact('users'));
+        return view('admin-side.akun-verifikasi.index', compact('users'));
     }
 
     public function saveStatus(Request $request)
