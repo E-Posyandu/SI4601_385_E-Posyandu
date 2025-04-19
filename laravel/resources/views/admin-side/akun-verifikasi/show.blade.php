@@ -60,12 +60,12 @@
                                     <td>{{ $balita->orangtua->email ?? '-' }}</td>
                                 </tr>
                                 <tr>
-                                    <td><strong>No. Telepon</strong></td>
+                                    <td><strong>No.Telepon</strong></td>
                                     <td>{{ $balita->orangtua->no_telp ?? '-' }}</td>
                                 </tr>
                             </table>
                         </div>
-                    </div>
+                    </div> 
                 </div>
             </div>
 

@@ -18,7 +18,7 @@ Route::get('/', fn() => redirect('/login'));
 Route::get('/verifikasi-akun', [VerifikasiAkunController::class, 'index'])
     ->name('verifikasi-akun.index');
 
-Route::get('/c/{id}', [VerifikasiAkunController::class, 'show'])
+Route::get('/c/{id}', [VerifikasiAkunController::class,'show'])
     ->name('verifikasi-akun.show');
 
     Route::prefix('verifikasi-akun')->group(function() {

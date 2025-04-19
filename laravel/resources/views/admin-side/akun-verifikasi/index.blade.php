@@ -61,7 +61,7 @@
     <div class="card-body">
         @if($balitas->isEmpty())
             <div class="alert alert-info text-center">
-                Tidak ada data yang ditemukan.
+                Tidak ada data yang ditemukann.
             </div>
         @else
             <div class="table-responsive">

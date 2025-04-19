@@ -55,6 +55,6 @@ class VerifikasiAkunController extends Controller
         $balita->status_akun = $request->status;
         $balita->save();
         
-        return back()->with('success', 'Status berhasil diperbarui');
+        return back()->with('success', 'Status berhasil diperbaruii');
     }
 }
