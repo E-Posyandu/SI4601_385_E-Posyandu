@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('table_balita', function (Blueprint $table) {
             $table->id('id_balita');
             $table->string('nama_balita');
-            $table->date('tanggal_lahir'); // Ganti integer dengan date
+            $table->date('tanggal_lahir'); 
             $table->string('jenis_kelamin');
             $table->string('golongan_darah');
             $table->integer('tinggi_badan');

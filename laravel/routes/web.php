@@ -21,8 +21,9 @@ Route::get('/verifikasi-akun', [VerifikasiAkunController::class, 'index'])
 Route::get('/c/{id}', [VerifikasiAkunController::class, 'show'])
     ->name('verifikasi-akun.show');
 
-Route::post('/verifikasi-akun/{id}/update-status', [VerifikasiAkunController::class, 'updateStatus'])
-    ->name('verifikasi-akun.update-status');
-    Route::get('/test-verifikasi', function() {
-        return 'Route test berhasil diakses!';
+    Route::prefix('verifikasi-akun')->group(function() {
+        Route::get('/', [VerifikasiAkunController::class, 'index'])->name('verifikasi-akun.index');
+        Route::get('/{id_balita}', [VerifikasiAkunController::class, 'show'])->name('verifikasi-akun.show');
+        Route::post('/{id_balita}/update-status', [VerifikasiAkunController::class, 'updateStatus'])
+            ->name('verifikasi-akun.update-status');
     });

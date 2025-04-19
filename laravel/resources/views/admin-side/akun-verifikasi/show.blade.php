@@ -3,9 +3,9 @@
 @section('content')
 <div class="container-fluid">
     <div class="card shadow mb-4">
-        <div class="card-header py-3 d-flex justify-content-between align-items-center">
-            <h6 class="m-0 font-weight-bold text-primary">Detail Verifikasi Akun</h6>
-            <a href="{{ route('verifikasi-akun.index') }}" class="btn btn-sm btn-secondary">
+        <div class="card-header py-3 d-flex justify-content-between align-items-center" style="background-color: #00bcd4; border-color: #00bcd4;">
+            <h6 class="m-0 font-weight-bold text-white">Detail Akun Balita</h6>
+            <a href="{{ route('verifikasi-akun.index') }}" class="btn btn-sm btn-light">
                 <i class="fas fa-arrow-left"></i> Kembali
             </a>
         </div>
@@ -13,46 +13,64 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="card mb-4">
-                        <div class="card-header bg-primary text-white">
+                        <div class="card-header text-white" style="background-color: #00bcd4;">
                             <h6 class="m-0 font-weight-bold">Informasi Balita</h6>
                         </div>
                         <div class="card-body">
-                            <dl class="row">
-                                <dt class="col-sm-4">Nama Balita</dt>
-                                <dd class="col-sm-8">{{ $balita->nama_balita }}</dd>
-                                
-                                <dt class="col-sm-4">NIK Anak</dt>
-                                <dd class="col-sm-8">{{ $balita->nik_anak }}</dd>
-                                
-                                <dt class="col-sm-4">Tanggal Lahir</dt>
-                                <dd class="col-sm-8">{{ $balita->tanggal_lahir->format('d/m/Y') }}</dd>
-                            </dl>
+                            <table class="table table-borderless">
+                                <tr>
+                                    <td width="40%"><strong>Nama Balita</strong></td>
+                                    <td>{{ $balita->nama_balita }}</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>NIK Anak</strong></td>
+                                    <td>{{ $balita->nik_anak }}</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Tanggal Lahir</strong></td>
+                                    <td>
+                                        @if($balita->tanggal_lahir)
+                                            {{ \Carbon\Carbon::parse($balita->tanggal_lahir)->format('d/m/Y') }}
+                                        @else
+                                            -
+                                        @endif
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Jenis Kelamin</strong></td>
+                                    <td>{{ $balita->jenis_kelamin == 'L' ? 'Laki-laki' : 'Perempuan' }}</td>
+                                </tr>
+                            </table>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="card mb-4">
-                        <div class="card-header bg-primary text-white">
+                        <div class="card-header text-white" style="background-color: #00bcd4;">
                             <h6 class="m-0 font-weight-bold">Informasi Orangtua</h6>
                         </div>
                         <div class="card-body">
-                            <dl class="row">
-                                <dt class="col-sm-4">Nama Orangtua</dt>
-                                <dd class="col-sm-8">{{ $balita->orangtua->nama_orangtua ?? '-' }}</dd>
-                                
-                                <dt class="col-sm-4">Email</dt>
-                                <dd class="col-sm-8">{{ $balita->orangtua->email ?? '-' }}</dd>
-                                
-                                <dt class="col-sm-4">No. Telepon</dt>
-                                <dd class="col-sm-8">{{ $balita->orangtua->no_telp ?? '-' }}</dd>
-                            </dl>
+                            <table class="table table-borderless">
+                                <tr>
+                                    <td width="40%"><strong>Nama Orangtua</strong></td>
+                                    <td>{{ $balita->orangtua->nama_orangtua ?? '-' }}</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Email</strong></td>
+                                    <td>{{ $balita->orangtua->email ?? '-' }}</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>No. Telepon</strong></td>
+                                    <td>{{ $balita->orangtua->no_telp ?? '-' }}</td>
+                                </tr>
+                            </table>
                         </div>
                     </div>
                 </div>
             </div>
 
             <div class="card mb-4">
-                <div class="card-header bg-primary text-white">
+                <div class="card-header text-white" style="background-color: #00bcd4;">
                     <h6 class="m-0 font-weight-bold">Status Verifikasi</h6>
                 </div>
                 <div class="card-body">
@@ -66,10 +84,6 @@
                                 <i class="fas fa-clock"></i> MENUNGGU VERIFIKASI
                             @endif
                         </strong>
-                        @if($balita->catatan_verifikasi)
-                            <hr>
-                            <p class="mb-0"><strong>Catatan:</strong> {{ $balita->catatan_verifikasi }}</p>
-                        @endif
                     </div>
 
                     @if($balita->status_akun == 'waiting')
@@ -77,10 +91,9 @@
                         @csrf
                         <div class="form-group">
                             <label for="catatan">Catatan Verifikasi</label>
-                            <textarea name="catatan" id="catatan" class="form-control" rows="3" 
-                                placeholder="Masukkan catatan jika diperlukan..."></textarea>
+                            <textarea name="catatan" id="catatan" class="form-control" rows="3"></textarea>
                         </div>
-                        <div class="text-right">
+                        <div class="text-right mt-3">
                             <button type="submit" name="status" value="approved" class="btn btn-success mr-2">
                                 <i class="fas fa-check"></i> Setujui
                             </button>

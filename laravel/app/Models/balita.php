@@ -10,6 +10,7 @@ class Balita extends Model
     use HasFactory;
 
     protected $table = 'table_balita';
+    protected $primaryKey = 'id_balita';
 
     protected $fillable = [
         'nama_balita',
@@ -31,50 +32,19 @@ class Balita extends Model
         'tanggal_lahir', 
     ];
 
-    
     public function orangtua()
     {
         return $this->belongsTo(Orangtua::class, 'id_orangtua');
     }
 
-    
     public function vaksin()
     {
         return $this->belongsTo(Vaksin::class, 'id_vaksin');
+        // Tambahkan third parameter jika id yang dirujuk bukan 'id' di tabel vaksin
     }
 
-    
     public function vitamin()
     {
         return $this->belongsTo(Vitamin::class, 'id_vitamin');
-    }
-
-
-    public function getStatusAkunTextAttribute()
-    {
-        switch ($this->status_akun) {
-            case 'approved':
-                return 'Approved';
-            case 'rejected':
-                return 'Rejected';
-            case 'waiting':
-                return 'Waiting';
-            default:
-                return 'Unknown';
-        }
-    }
-
-    public function getStatusAkunWarnaAttribute()
-    {
-        switch ($this->status_akun) {
-            case 'approved':
-                return 'green';
-            case 'rejected':
-                return 'red';
-            case 'waiting':
-                return 'gray'; 
-            default:
-                return 'black'; 
-        }
     }
 }
