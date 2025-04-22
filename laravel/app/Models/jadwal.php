@@ -2,31 +2,20 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
-class jadwal extends Model
+class Jadwal extends Model
 {
     use HasFactory;
-    protected $table = 'table_jadwal';
-    protected $primaryKey = 'id_jadwal';
+
+    protected $table = 'jadwals'; // atau 'jadwal' jika nama tabel tanpa "s"
+
     protected $fillable = [
         'nama_kegiatan',
-        'jenis_kegiatan', 
+        'jenis_kegiatan',
         'tanggal_kegiatan',
         'id_petugasKader',
-        'id_visited'
+        'id_posyandu',
     ];
-
-    // Relationship with PetugasKader (Many to One)
-    public function petugasKader()
-    {
-        return $this->belongsTo(PetugasKader::class, 'id_petugasKader');
-    }
-
-    // Relationship with Visited (One to One)
-    public function visited()
-    {
-        return $this->hasOne(Visited::class, 'id_visited');
-    }
 }

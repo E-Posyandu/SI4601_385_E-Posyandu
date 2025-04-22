@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\JadwalKegiatanController;
 use App\Http\Controllers\ArtikelController;
 use App\Http\Controllers\babyController;
 use App\Http\Controllers\VerifikasiAdmin;
