@@ -25,7 +25,7 @@ class AdminController extends Controller
     
         if ($admin && $request->password === $admin->password) {
             Session::put('admin', $admin);
-            return redirect()->route('index'); 
+            return redirect()->route('artikel.index'); 
         }
     
         return back()->withErrors([
