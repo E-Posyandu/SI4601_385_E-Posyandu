@@ -8,14 +8,17 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class artikel extends Model
 {
     use HasFactory;
-    protected $table = 'artikel';
+    protected $table = 'table_artikel';
     protected $primaryKey = 'id_artikel';
-    
+
     protected $fillable = [
+        'id_artikel',
         'judul',
-        'isi', 
+        'isi',
         'author',
-        'is_show'
+        'is_show',
+        'created_at',
+        'updated_at',
     ];
 
     // Define relationship with admin (one-to-many)
