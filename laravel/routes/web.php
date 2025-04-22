@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\JadwalKegiatanController;
 use App\Http\Controllers\ArtikelController;
 use App\Http\Controllers\babyController;
+use App\Http\Controllers\VerifikasiAdmin;
 
 
 Route::get('/', function () {
@@ -28,4 +29,6 @@ Route::get('/babies/{id}/edit', [babyController::class, 'edit'])->name('babies.e
 Route::put('/babies/{id}', [babyController::class, 'update'])->name('babies.update');
 Route::delete('/babies/{id}', [babyController::class, 'destroy'])->name('babies.destroy');
 
-
+// route for Verifikasi admin
+Route::get('/admin/verifikasi-akun', [VerifikasiAdminController::class, 'index'])->name('verifikasi-akun.index');
+Route::post('/admin/verifikasi-akun/save', [VerifikasiAdminController::class, 'saveStatus'])->name('verifikasi-akun.saveStatus');
