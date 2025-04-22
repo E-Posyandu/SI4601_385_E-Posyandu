@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
+class CreateTableArtikel extends Migration
 {
     /**
      * Run the migrations.
@@ -12,9 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('table_artikel', function (Blueprint $table) {
-            $table->integer('id_artikel');
+            $table->increments('id_artikel');
             $table->string('judul');
-            $table->string('isi');
+            $table->text('isi');
             $table->string('author');
             $table->boolean('is_show');
             $table->timestamps();
@@ -28,4 +28,4 @@ return new class extends Migration
     {
         Schema::dropIfExists('table_artikel');
     }
-};
+}

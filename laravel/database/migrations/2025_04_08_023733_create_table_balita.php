@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id('id_balita');
             $table->string('nama_balita');
             $table->date('tanggal_lahir');
+            $table->date('tanggal_lahir'); 
             $table->string('jenis_kelamin');
             $table->string('golongan_darah');
             $table->unsignedBigInteger('id_orangtua');
@@ -22,6 +23,9 @@ return new class extends Migration
             $table->unsignedBigInteger('id_vitamin');
             $table->string('username');
             $table->string('password');     
+            $table->string('password');
+            $table->char('nik_anak', 16)->unique();    // Menambahkan kolom NIK dengan batasan 16 karakter
+            $table->enum('status_akun', ['approved', 'rejected', 'waiting'])->default('waiting');
             $table->foreign('id_orangtua')->references('id_orangtua')->on('table_orangtua');
             $table->foreign('id_vaksin')->references('id_vaksin')->on('table_vaksin');
             $table->foreign('id_vitamin')->references('id_vitamin')->on('table_vitamin');
