@@ -2,14 +2,16 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
-class balita extends Model
+class Balita extends Model
 {
     use HasFactory;
-    protected $table = 'balita';
+
+    protected $table = 'table_balita';
     protected $primaryKey = 'id_balita';
+
     protected $fillable = [
         'nama_balita',
         'tanggal_lahir',
@@ -21,26 +23,28 @@ class balita extends Model
         'id_vaksin',
         'id_vitamin',
         'username',
-        'password'
+        'password',
+        'nik_anak',
+        'status_akun', 
     ];
 
-    // Relationship with parent (one-to-many)
+    protected $dates = [
+        'tanggal_lahir', 
+    ];
+
     public function orangtua()
     {
-        return $this->belongsTo(Orangtua::class, 'id_orangtua', 'id_orangtua');
+        return $this->belongsTo(Orangtua::class, 'id_orangtua');
     }
 
-    // Relationship with vaccines (many-to-many)
     public function vaksin()
     {
-        return $this->belongsToMany(Vaksin::class, 'balita_vaksin', 'id_balita', 'id_vaksin')
-            ->withTimestamps();
+        return $this->belongsTo(Vaksin::class, 'id_vaksin');
+        // Tambahkan third parameter jika id yang dirujuk bukan 'id' di tabel vaksin
     }
 
-    // Relationship with vitamins (many-to-many)
     public function vitamin()
     {
-        return $this->belongsToMany(Vitamin::class, 'balita_vitamin', 'id_balita', 'id_vitamin')
-            ->withTimestamps();
+        return $this->belongsTo(Vitamin::class, 'id_vitamin');
     }
 }
