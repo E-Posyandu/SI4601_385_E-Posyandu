@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\JadwalKegiatanController;
 use App\Http\Controllers\ArtikelController;
 use App\Http\Controllers\babyController;
 
@@ -26,4 +27,5 @@ Route::get('/babies/{id}', [babyController::class, 'show'])->name('babies.show')
 Route::get('/babies/{id}/edit', [babyController::class, 'edit'])->name('babies.edit');
 Route::put('/babies/{id}', [babyController::class, 'update'])->name('babies.update');
 Route::delete('/babies/{id}', [babyController::class, 'destroy'])->name('babies.destroy');
+
 

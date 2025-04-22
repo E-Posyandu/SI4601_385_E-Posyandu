@@ -16,7 +16,7 @@
                                 <img src="{{ asset('assets/Baby Feet.png') }}" alt="Logo" style="height: 20px; margin-right: 8px;">
                                 Data bayi
                             </a>
-                            <a class="nav-link" href="{{ route('index') }}">
+                            <a class="nav-link {{ request()->routeIs('index') ? 'active' : '' }}" href="{{ route('index') }}">
                                 <img src="{{ asset('assets/Schedule.png') }}" alt="Logo" style="height: 20px; margin-right: 8px;">
                                 Jadwal Kegiatan
                             </a>
