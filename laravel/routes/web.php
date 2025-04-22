@@ -72,7 +72,31 @@ Route::prefix('babies')->group(function() {
 });
 
 // Admin Verification Routes
-Route::prefix('admin')->group(function() {
-    Route::get('/verifikasi-akun', [VerifikasiAdminController::class, 'index'])->name('verifikasi-akun.index');
-    Route::post('/verifikasi-akun/save', [VerifikasiAdminController::class, 'saveStatus'])->name('verifikasi-akun.saveStatus');
+//Route::prefix('admin')->group(function() {
+//    Route::get('/verifikasi-akun', [VerifikasiAdminController::class, 'index'])->name('verifikasi-akun.index');
+//    Route::post('/verifikasi-akun/save', [VerifikasiAdminController::class, 'saveStatus'])->name('verifikasi-akun.saveStatus');
+//});
+
+// Dashboard Admin Route
+Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+
+
+Route::prefix('jadwal-kegiatan')->group(function () {
+    // Lihat daftar jadwal kegiatan
+    Route::get('/', [JadwalKegiatanController::class, 'index'])->name('jadwal-kegiatan.index');
+
+    // Form tambah jadwal kegiatan
+    Route::get('/create', [JadwalKegiatanController::class, 'create'])->name('jadwal-kegiatan.create');
+
+    // Simpan jadwal kegiatan baru
+    Route::post('/', [JadwalKegiatanController::class, 'store'])->name('jadwal-kegiatan.store');
+
+    // Form edit jadwal kegiatan
+    Route::get('/{jadwal}/edit', [JadwalKegiatanController::class, 'edit'])->name('jadwal-kegiatan.edit');
+
+    // Update jadwal kegiatan
+    Route::put('/{jadwal}', [JadwalKegiatanController::class, 'update'])->name('jadwal-kegiatan.update');
+
+    // Hapus jadwal kegiatan
+    Route::delete('/{jadwal}', [JadwalKegiatanController::class, 'destroy'])->name('jadwal-kegiatan.destroy');
 });
