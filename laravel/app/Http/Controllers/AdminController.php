@@ -9,6 +9,11 @@ use Illuminate\Support\Facades\Session;
 class AdminController extends Controller
 {
 
+    public function dashboard()
+    {
+        return view('admin-side.dashboard');
+    }
+
     public function showLoginForm()
     {
         return view('login');
@@ -20,19 +25,19 @@ class AdminController extends Controller
             'username' => 'required|string',
             'password' => 'required|string',
         ]);
-    
+
         $admin = Admin::where('username', $request->username)->first();
-    
+
         if ($admin && $request->password === $admin->password) {
             Session::put('admin', $admin);
-            return redirect()->route('artikel.index'); 
+            return redirect()->route('admin.dashboard');
         }
-    
+
         return back()->withErrors([
             'login' => 'Username atau password salah.',
         ])->withInput();
     }
-    
+
 
     public function logout()
     {
