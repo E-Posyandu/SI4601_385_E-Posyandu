@@ -7,13 +7,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class dailyreport extends Model
 {
-    use HasFactory;
     protected $table = 'table_daily_reports';
-    protected $primaryKey = 'id';
+    protected $primaryKey = 'id_daily_reports';
+
     protected $fillable = [
         'id_balita',
         'tanggal',
-        'catatan',
+        'catatan'
     ];
 
     public function balita()

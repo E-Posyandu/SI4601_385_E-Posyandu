@@ -31,9 +31,9 @@
                     <div class="card-body">
                         <h5 class="card-title">Daily Report {{ $loop->iteration }}</h5>
                         <p class="card-text"><strong>Tanggal:</strong> {{ $report->tanggal }}</p>
-                        <p class="card-text"><strong>Catatan:</strong> {{ Str::limit($report->catatan, 50) }}</p>
+                        <p class="card-text"><strong>Catatan:</strong> {{ Str::limit($report->catatan, 250) }}</p>
                         <a href="{{ route('user-side.dailyReport.show', ['id' => $report->id_daily_reports]) }}" class="btn btn-primary">Lihat Detail</a>
-                        <a href="{{ route('user-side.dailyReport.edit', ['id' => $report->id_daily_reports]) }}" class="btn btn-success">Edit</a>
+                        <!-- <a href="{{ route('user-side.dailyReport.edit', ['id' => $report->id_daily_reports]) }}" class="btn btn-success">Edit</a> -->
                     </div>
                 </div>
             @endforeach

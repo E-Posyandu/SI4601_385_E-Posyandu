@@ -53,13 +53,13 @@ class dailyreportUserController extends Controller
             'catatan' => $request->catatan
         ]);
 
-        return redirect()->route('user-side.dailyReport.show', ['id' => $dailyReport->id])
-                        ->with('success', 'Laporan harian berhasil ditambahkan.');
+        return redirect()->route('user-side.dailyReport.show', $dailyReport->id_daily_reports)
+                    ->with('success', 'Laporan harian berhasil ditambahkan.');
     }
 
     public function show($id)
     {
-        $report = dailyreport::findOrFail($id); 
-        return redirect()->route('user-side.dailyReport.show')->with('success', 'Laporan harian berhasil ditambahkan.');
+        $report = dailyreport::where('id_daily_reports', $id)->firstOrFail();
+        return view('user-side.dailyReport.show', compact('report'));
     }
 }
