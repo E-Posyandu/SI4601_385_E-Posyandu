@@ -7,7 +7,7 @@
     <div class="container-fluid px-4 mt-4">
         <h3 class="mb-4">Detail Biodata Balita</h3>
         <div class="row">
-            <!-- Kolom Kiri: Biodata + Laporan -->
+            <!-- Kolom Kiri: Biodata & Laporan -->
             <div class="col-md-4">
                 <!-- Biodata Balita -->
                 <div class="card mb-4">
@@ -24,10 +24,10 @@
                 <div class="card mb-4">
                     <div class="card-header d-flex justify-content-between align-items-center">
                         <span>Laporan Perkembangan</span>
-                        <button class="btn btn-primary">+ Buat Laporan Baru</button>
+                        <a href="{{ route('report-perkembangan.index') }}" class="btn btn-primary btn-sm">+ Buat Laporan Baru</a>
                     </div>
                     <div class="card-body">
-                        <table class="table table-bordered">
+                        <table class="table table-bordered mb-0">
                             <thead>
                                 <tr>
                                     <th>Bulan</th>
@@ -35,19 +35,18 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>Januari 2025</td>
-                                    <td><a href="#" class="btn btn-sm btn-info">Download</a></td>
-                                </tr>
-                                <tr>
-                                    <td>Februari 2025</td>
-                                    <td><a href="#" class="btn btn-sm btn-info">Download</a></td>
-                                </tr>
-                                <tr>
-                                    <td>Maret 2025</td>
-                                    <td><a href="#" class="btn btn-sm btn-info">Download</a></td>
-                                </tr>
-                                <!-- Tambahkan data lainnya jika ada -->
+                                @forelse ($balita->reportPerkembangan as $report)
+                                    <tr>
+                                        <td>{{ \Carbon\Carbon::parse($report->tanggal)->isoFormat('MMMM YYYY') }}</td>
+                                        <td>
+                                            <a href="{{ asset('storage/' . $report->file_path) }}" target="_blank" class="btn btn-sm btn-info">Download</a>
+                                        </td>
+                                    </tr>
+                                @empty
+                                    <tr>
+                                        <td colspan="2" class="text-center">Belum ada laporan perkembangan</td>
+                                    </tr>
+                                @endforelse
                             </tbody>
                         </table>
                     </div>
@@ -85,7 +84,7 @@
 
     // Grafik Berat Badan
     const ctxBerat = document.getElementById('beratChart').getContext('2d');
-    const beratChart = new Chart(ctxBerat, {
+    new Chart(ctxBerat, {
         type: 'line',
         data: {
             labels: labels,
@@ -109,8 +108,6 @@
             scales: {
                 y: {
                     beginAtZero: true,
-                    min: 6,
-                    max: 15,
                     title: {
                         display: true,
                         text: 'Kg'
@@ -128,7 +125,7 @@
 
     // Grafik Tinggi Badan
     const ctxTinggi = document.getElementById('tinggiChart').getContext('2d');
-    const tinggiChart = new Chart(ctxTinggi, {
+    new Chart(ctxTinggi, {
         type: 'line',
         data: {
             labels: labels,
@@ -152,8 +149,6 @@
             scales: {
                 y: {
                     beginAtZero: true,
-                    min: 60,
-                    max: 100,
                     title: {
                         display: true,
                         text: 'Cm'

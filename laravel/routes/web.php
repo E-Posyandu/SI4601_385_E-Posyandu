@@ -12,6 +12,7 @@ use App\Http\Controllers\posyandureportUserController;
 use App\Http\Controllers\eventUserController;
 use App\Http\Controllers\profileUserController;
 use App\Http\Controllers\VerifikasiAdminController;
+use App\Http\Controllers\ReportPerkembanganController;
 
 // Authentication Routes
 Route::get('/', fn() => redirect('/login'));
@@ -100,3 +101,6 @@ Route::prefix('jadwal-kegiatan')->group(function () {
     // Hapus jadwal kegiatan
     Route::delete('/{jadwal}', [JadwalKegiatanController::class, 'destroy'])->name('jadwal-kegiatan.destroy');
 });
+
+// Report Perkembangan Bayi
+Route::resource('report-perkembangan', ReportPerkembanganController::class);

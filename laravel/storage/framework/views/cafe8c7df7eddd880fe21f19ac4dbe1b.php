@@ -16,6 +16,10 @@
                                 <img src="<?php echo e(asset('assets/Baby Feet.png')); ?>" alt="Logo" style="height: 20px; margin-right: 8px;">
                                 Data bayi
                             </a>
+                            <a class="nav-link <?php echo e(request()->routeIs('report-perkembangan.index') ? 'active' : ''); ?>" href="<?php echo e(route('report-perkembangan.index')); ?>">
+                                <img src="<?php echo e(asset('assets/file.png')); ?>" alt="Logo" style="height: 20px; margin-right: 8px;">
+                                Report Bayi
+                            </a>
                             <a class="nav-link <?php echo e(request()->routeIs('index') ? 'active' : ''); ?>" href="<?php echo e(route('index')); ?>">
                                 <img src="<?php echo e(asset('assets/Schedule.png')); ?>" alt="Logo" style="height: 20px; margin-right: 8px;">
                                 Jadwal Kegiatan

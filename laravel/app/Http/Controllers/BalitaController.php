@@ -7,6 +7,8 @@ use App\Models\balita;
 use App\Models\orangtua;
 use App\Models\visited;
 use Carbon\Carbon;
+use App\Models\ReportPerkembangan;
+
 
 class BalitaController extends Controller
 {
@@ -87,8 +89,7 @@ class BalitaController extends Controller
     // function untuk menampilkan data balita by Id
     public function show($id) 
     {
-        $balita = balita::findOrFail($id);
-
+        $balita = balita::with('reportPerkembangan')->findOrFail($id);
         $kunjungan = visited::where('id_balita', $id)
             ->orderBy('tanggal_penimbangan')
             ->get(['tanggal_penimbangan', 'berat_badan', 'tinggi_badan', 'lingkar_kepala'])

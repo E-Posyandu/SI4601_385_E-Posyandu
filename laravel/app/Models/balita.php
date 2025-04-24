@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\ReportPerkembangan;
 
 class Balita extends Model
 {
@@ -45,8 +47,15 @@ class Balita extends Model
         return $this->belongsTo(Vitamin::class, 'id_vitamin');
     }
 
-     public function kunjunganTerakhir()
+    public function kunjunganTerakhir()
     {
         return $this->hasOne(Visited::class, 'id_balita', 'id_balita')->latestOfMany('tanggal_penimbangan');
     }
+
+    
+    public function reportPerkembangan()
+    {
+        return $this->hasMany(ReportPerkembangan::class, 'id_balita', 'id_balita');
+    }
+
 }
