@@ -4,11 +4,11 @@
                     <div class="sb-sidenav-menu">
                         <div class="nav">
                             <div class="sb-sidenav-menu-heading"></div>
-                            <a class="nav-link <?php echo e(request()->routeIs('index') ? 'active' : ''); ?>" href="<?php echo e(route('index')); ?>">
+                            <a class="nav-link <?php echo e(request()->routeIs('admin.dashboard') ? 'active' : ''); ?>" href="<?php echo e(route('admin.dashboard')); ?>">
                                 <img src="<?php echo e(asset('assets/home.png')); ?>" alt="Logo" style="height: 25px; margin-right: 8px;">
                                 Dashboard
                             </a>
-                           <a class="nav-link <?php echo e(request()->routeIs('verifikasi-akun.index') ? 'active' : ''); ?>" href="<?php echo e(route('verifikasi-akun.index')); ?>">
+                            <a class="nav-link <?php echo e(request()->routeIs('verifikasi-akun.*') ? 'active' : ''); ?>" href="<?php echo e(route('verifikasi-akun.index')); ?>">
                                 <img src="<?php echo e(asset('assets/user.png')); ?>" alt="Logo" style="height: 25px; margin-right: 8px;">
                                 Akun Verifikasi
                             </a>
@@ -20,7 +20,7 @@
                                 <img src="<?php echo e(asset('assets/Schedule.png')); ?>" alt="Logo" style="height: 20px; margin-right: 8px;">
                                 Jadwal Kegiatan
                             </a>
-                            <a class="nav-link <?php echo e(request()->routeIs('artikel.index') ? 'active' : ''); ?>" href="<?php echo e(route('artikel.index')); ?>">
+                            <a class="nav-link <?php echo e(request()->routeIs('artikel.*') ? 'active' : ''); ?>" href="<?php echo e(route('artikel.index')); ?>">
                                 <img src="<?php echo e(asset('assets/News.png')); ?>" alt="Logo" style="height: 20px; margin-right: 8px;">
                                 Artikel & Edukasi
                             </a>

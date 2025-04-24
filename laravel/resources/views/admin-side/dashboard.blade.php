@@ -12,7 +12,7 @@
             <div class="card bg-primary text-white mb-4">
                 <div class="card-body">Total Bayi</div>
                 <div class="card-footer d-flex align-items-center justify-content-between">
-                    <a class="small text-white stretched-link" href="{{ route('babies.index') }}">Lihat Detail</a>
+                    <a class="small text-white stretched-link" href="{{ route('balita.index') }}">Lihat Detail</a>
                     <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                 </div>
             </div>

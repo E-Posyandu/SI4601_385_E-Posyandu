@@ -5,7 +5,7 @@
                         <div class="nav">
                             <div class="sb-sidenav-menu-heading"></div>
                             <a class="nav-link {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}" href="{{ route('admin.dashboard') }}">
-                                <div class="sb-nav-link-icon"><i class="fas fa-home"></i></div>
+                                <img src="{{ asset('assets/home.png') }}" alt="Logo" style="height: 25px; margin-right: 8px;">
                                 Dashboard
                             </a>
                             <a class="nav-link {{ request()->routeIs('verifikasi-akun.*') ? 'active' : '' }}" href="{{ route('verifikasi-akun.index') }}">
