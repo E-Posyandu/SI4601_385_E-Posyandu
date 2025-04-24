@@ -5,7 +5,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\VerifikasiAkunController;
 use App\Http\Controllers\JadwalKegiatanController;
 use App\Http\Controllers\ArtikelController;
-use App\Http\Controllers\babyController;
+use App\Http\Controllers\BalitaController;
 use App\Http\Controllers\dashboardUserController;
 use App\Http\Controllers\dailyreportUserController;
 use App\Http\Controllers\posyandureportUserController;
@@ -61,14 +61,14 @@ Route::prefix('artikel')->group(function() {
 });
 
 // Baby Management Routes
-Route::prefix('babies')->group(function() {
-    Route::get('/', [babyController::class, 'index'])->name('babies.index');
-    Route::get('/create', [babyController::class, 'create'])->name('babies.create');
-    Route::post('/', [babyController::class, 'store'])->name('babies.store');
-    Route::get('/{id}', [babyController::class, 'show'])->name('babies.show');
-    Route::get('/{id}/edit', [babyController::class, 'edit'])->name('babies.edit');
-    Route::put('/{id}', [babyController::class, 'update'])->name('babies.update');
-    Route::delete('/{id}', [babyController::class, 'destroy'])->name('babies.destroy');
+Route::prefix('DataBalita')->group(function() {
+    Route::get('/', [BalitaController::class, 'index'])->name('balita.index');
+    Route::get('/create', [BalitaController::class, 'create'])->name('balita.create');
+    Route::post('/', [BalitaController::class, 'store'])->name('balita.store');
+    Route::get('/{id}', [BalitaController::class, 'show'])->name('balita.show');
+    Route::get('/{id}/edit', [BalitaController::class, 'edit'])->name('balita.edit');
+    Route::put('/{id}', [BalitaController::class, 'update'])->name('balita.update');
+    Route::delete('/{id}', [BalitaController::class, 'destroy'])->name('balita.destroy');
 });
 
 // Admin Verification Routes

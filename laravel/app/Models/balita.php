@@ -44,4 +44,9 @@ class Balita extends Model
     {
         return $this->belongsTo(Vitamin::class, 'id_vitamin');
     }
+
+     public function kunjunganTerakhir()
+    {
+        return $this->hasOne(Visited::class, 'id_balita', 'id_balita')->latestOfMany('tanggal_penimbangan');
+    }
 }

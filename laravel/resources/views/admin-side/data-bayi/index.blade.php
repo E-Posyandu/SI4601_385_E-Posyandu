@@ -7,7 +7,7 @@
     <div class="container-fluid px-4 mt-4">
         <h3 class="mb-4">Data Balita</h3>
 
-        <form method="GET" action="{{ route('babies.index') }}" class="mb-3">
+        <form method="GET" action="{{ route('balita.index') }}" class="mb-3">
             <div class="input-group">
                 <input type="text" name="search" class="form-control" placeholder="Cari nama balita..." value="{{ request('search') }}">
                 <button class="btn btn-primary" type="submit">Cari</button>
@@ -43,7 +43,7 @@
                                 <td>{{ $baby->kunjunganTerakhir?->berat_badan ?? 'Belum ada data' }}</td>
                                 <td>{{ $baby->kunjunganTerakhir?->tinggi_badan ?? 'Belum ada data' }}</td>
                                 <td>
-                                    <a href="{{ route('babies.show', $baby->id_balita) }}" class="btn btn-sm btn-info">Lihat Detail</a>
+                                    <a href="{{ route('balita.show', $baby->id_balita) }}" class="btn btn-sm btn-info">Lihat Detail</a>
                                 </td>
                             </tr>
                         @empty
