@@ -20,7 +20,7 @@
                                 <img src="{{ asset('assets/file.png') }}" alt="Logo" style="height: 20px; margin-right: 8px;">
                                 Report Bayi
                             </a>
-                            <a class="nav-link {{ request()->routeIs('index') ? 'active' : '' }}" href="{{ route('index') }}">
+                            <a class="nav-link {{ request()->routeIs('index') ? 'active' : '' }}" href="{{ route('jadwal-kegiatan.index') }}">
                                 <img src="{{ asset('assets/Schedule.png') }}" alt="Logo" style="height: 20px; margin-right: 8px;">
                                 Jadwal Kegiatan
                             </a>
