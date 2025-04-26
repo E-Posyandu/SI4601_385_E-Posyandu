@@ -31,7 +31,6 @@
 @endsection
 
 @section('scripts')
-<!-- Load CKEditor 5 dari CDN -->
 <script src="https://cdn.ckeditor.com/ckeditor5/41.1.0/classic/ckeditor.js"></script>
 <script>
     ClassicEditor
