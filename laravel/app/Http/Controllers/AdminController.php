@@ -4,11 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Admin;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
-
     public function dashboard()
     {
         return view('admin-side.dashboard');
@@ -26,10 +25,13 @@ class AdminController extends Controller
             'password' => 'required|string',
         ]);
 
+        // Cari user manual
         $admin = Admin::where('username', $request->username)->first();
 
-        if ($admin && $request->password === $admin->password) {
-            Session::put('admin', $admin);
+        if ($admin && $admin->password === $request->password) {
+            // Simulasikan login manual
+            Auth::guard('admin')->login($admin);
+            $request->session()->regenerate();
             return redirect()->route('admin.dashboard');
         }
 
@@ -38,10 +40,9 @@ class AdminController extends Controller
         ])->withInput();
     }
 
-
     public function logout()
     {
-        Session::forget('admin');
+        Auth::guard('admin')->logout();
         return redirect()->route('login');
     }
 }

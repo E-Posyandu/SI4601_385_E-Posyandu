@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\VerifikasiAkunController;
 use App\Http\Controllers\JadwalKegiatanController;
@@ -11,18 +12,28 @@ use App\Http\Controllers\dailyreportUserController;
 use App\Http\Controllers\posyandureportUserController;
 use App\Http\Controllers\eventUserController;
 use App\Http\Controllers\profileUserController;
-use App\Http\Controllers\VerifikasiAdminController;
 use App\Http\Controllers\ReportPerkembanganController;
+use App\Http\Controllers\VerifikasiController;
 
 // Authentication Routes
-Route::get('/', fn() => redirect('/login'));
+Route::get('/', function () {
+    if (Auth::check()) {
+        if (Auth::user()->role == 'admin') {
+            return redirect()->route('admin.dashboard');
+        } else {
+            return redirect()->route('dashboard');
+        }
+    }
+    return redirect()->route('login');
+});
+
 Route::get('/login', [AdminController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AdminController::class, 'login']);
 Route::post('/logout', [AdminController::class, 'logout'])->name('logout');
 
 // Dashboard Routes
-Route::get('/dashboard', [dashboardUserController::class, 'index'])->name('dashboard');
-Route::get('/', [dashboardUserController::class, 'index'])->name('index');
+Route::get('/dashboard', [dashboardUserController::class, 'index'])->middleware('auth')->name('dashboard');
+Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->middleware(['auth', 'admin'])->name('admin.dashboard');
 
 // User-side Routes
 Route::prefix('user-side')->group(function () {
@@ -43,12 +54,21 @@ Route::get('/event', [eventUserController::class, 'index'])->name('event');
 Route::get('/profile', [profileUserController::class, 'index'])->name('profile');
 
 // Account Verification Routes
-Route::prefix('verifikasi-akun')->group(function() {
-    Route::get('/', [VerifikasiAkunController::class, 'index'])->name('verifikasi-akun.index');
-    Route::get('/{id_balita}', [VerifikasiAkunController::class, 'show'])->name('verifikasi-akun.show');
-    Route::post('/{id_balita}/update-status', [VerifikasiAkunController::class, 'updateStatus'])
-        ->name('verifikasi-akun.update-status');
+// Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
+//     Route::get('/akun-verifikasi', [VerifikasiController::class, 'index'])->name('accountVerification.index');
+//     Route::patch('/akun-verifikasi/{id}/approve', [VerifikasiController::class, 'approve'])->name('accountVerification.approve');
+//     Route::patch('/akun-verifikasi/{id}/reject', [VerifikasiController::class, 'reject'])->name('accountVerification.reject');
+// });
+
+
+// Account Verification
+Route::prefix('accountVerification')->group(function() {
+    Route::get('/', [VerifikasiController::class, 'index'])->name('accountVerification.index');
+    // Route::put('/{id}', [VerifikasiController::class, 'update'])->name('accountVerification.update');
 });
+
+
+
 
 // Article Routes
 Route::prefix('artikel')->group(function() {

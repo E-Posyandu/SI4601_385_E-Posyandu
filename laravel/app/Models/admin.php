@@ -2,22 +2,20 @@
 
 namespace App\Models;
 
+// Pakai ini, bukan Model biasa
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 
-class Admin extends Model
+class Admin extends Authenticatable
 {
     use HasFactory;
 
-    // Tentukan nama tabel yang digunakan oleh model
     protected $table = 'table_admin';
 
-    // Tentukan kolom yang dapat diisi secara massal
     protected $fillable = ['username', 'password'];
 
-    // Kolom yang tidak perlu ditampilkan (seperti password)
     protected $hidden = ['password'];
 
-    // Aktifkan timestamps jika diperlukan
+    // Kalau tabelmu ada created_at dan updated_at, biarin true
     public $timestamps = true;
 }
