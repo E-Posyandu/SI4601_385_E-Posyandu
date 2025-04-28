@@ -22,6 +22,8 @@
                                 <th>Nama Kegiatan</th>
                                 <th>Jenis Kegiatan</th>
                                 <th>Tanggal Kegiatan</th>
+                                <th>Petugas</th>
+                                <th>Posyandu</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -33,6 +35,8 @@
                                     <td>{{ $item->nama_kegiatan }}</td>
                                     <td>{{ $item->jenis_kegiatan }}</td>
                                     <td>{{ $item->tanggal_kegiatan }}</td>
+                                    <td>{{ $item->id_petugas_kader }}</td>
+                                    <td>{{ $item->id_posyandu }}</td>
                                     <td>
                                         @if (!empty($item->id_jadwal))
                                             <a href="{{ route('jadwal-kegiatan.edit', ['jadwal' => $item->id_jadwal]) }}" class="btn btn-warning">Edit</a>
