@@ -3,17 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\balita;
+use Illuminate\Support\Facades\Storage;
+use App\Models\Balita;
 use App\Models\ReportPerkembangan;
 
 class ReportPerkembanganController extends Controller
 {
     public function index()
     {
-         $balita = Balita::all();
+        $balita = Balita::all();
         return view('admin-side.report-perkembangan.index', compact('balita'));
     }
-
 
     public function store(Request $request)
     {
@@ -24,7 +24,7 @@ class ReportPerkembanganController extends Controller
         ]);
 
         $file = $request->file('file');
-        $path = $file->store('reports', 'public'); 
+        $path = $file->store('reports', 'public');
 
         ReportPerkembangan::create([
             'id_balita' => $request->id_balita,
@@ -37,7 +37,7 @@ class ReportPerkembanganController extends Controller
 
     public function destroy($id)
     {
-        $report = Report::findOrFail($id);
+        $report = ReportPerkembangan::findOrFail($id);
 
         // Hapus file dari storage
         if ($report->file_path && Storage::disk('public')->exists($report->file_path)) {
