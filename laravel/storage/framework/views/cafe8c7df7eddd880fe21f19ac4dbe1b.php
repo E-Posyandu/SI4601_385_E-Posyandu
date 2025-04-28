@@ -8,7 +8,7 @@
                                 <img src="<?php echo e(asset('assets/home.png')); ?>" alt="Logo" style="height: 25px; margin-right: 8px;">
                                 Dashboard
                             </a>
-                            <a class="nav-link <?php echo e(request()->routeIs('verifikasi-akun.*') ? 'active' : ''); ?>" href="<?php echo e(route('verifikasi-akun.index')); ?>">
+                            <a class="nav-link <?php echo e(request()->routeIs('accountVerification.index') ? 'active' : ''); ?>" href="<?php echo e(route('accountVerification.index')); ?>">
                                 <img src="<?php echo e(asset('assets/user.png')); ?>" alt="Logo" style="height: 25px; margin-right: 8px;">
                                 Akun Verifikasi
                             </a>
@@ -20,7 +20,7 @@
                                 <img src="<?php echo e(asset('assets/file.png')); ?>" alt="Logo" style="height: 20px; margin-right: 8px;">
                                 Report Bayi
                             </a>
-                            <a class="nav-link <?php echo e(request()->routeIs('index') ? 'active' : ''); ?>" href="<?php echo e(route('index')); ?>">
+                            <a class="nav-link <?php echo e(request()->routeIs('index') ? 'active' : ''); ?>" href="<?php echo e(route('jadwal-kegiatan.index')); ?>">
                                 <img src="<?php echo e(asset('assets/Schedule.png')); ?>" alt="Logo" style="height: 20px; margin-right: 8px;">
                                 Jadwal Kegiatan
                             </a>

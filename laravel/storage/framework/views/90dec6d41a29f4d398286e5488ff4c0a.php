@@ -1,7 +1,7 @@
 <div id="layoutSidenav_nav">
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-white">
         <!-- Navbar Brand-->
-        <a class="navbar-brand ps-3" href="<?php echo e(route('index')); ?>">
+        <a class="navbar-brand ps-3" href="<?php echo e(route('admin.dashboard')); ?>">
             <img src="<?php echo e(asset('assets/logo.png')); ?>" alt="Logo" style="height: 47px;">
         </a>
 
@@ -37,4 +37,5 @@
             });
         }
     });
-</script><?php /**PATH C:\laragon\www\SI4601_385_E-Posyandu\laravel\resources\views/admin-side/layout-admin/navbar.blade.php ENDPATH**/ ?>
+</script>
+<?php /**PATH C:\laragon\www\SI4601_385_E-Posyandu\laravel\resources\views/admin-side/layout-admin/navbar.blade.php ENDPATH**/ ?>
