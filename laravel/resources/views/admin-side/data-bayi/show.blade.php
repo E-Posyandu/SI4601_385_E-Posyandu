@@ -38,8 +38,13 @@
                                 @forelse ($balita->reportPerkembangan as $report)
                                     <tr>
                                         <td>{{ \Carbon\Carbon::parse($report->tanggal)->isoFormat('MMMM YYYY') }}</td>
-                                        <td>
+                                        <td class="d-flex gap-2">
                                             <a href="{{ asset('storage/' . $report->file_path) }}" target="_blank" class="btn btn-sm btn-info">Download</a>
+                                            <form action="{{ route('report-perkembangan.destroy', $report->id) }}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus laporan ini?')">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                            </form>
                                         </td>
                                     </tr>
                                 @empty
