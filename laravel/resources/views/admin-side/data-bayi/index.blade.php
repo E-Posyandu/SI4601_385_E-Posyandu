@@ -4,99 +4,53 @@
 
 @section('content')
 <main>
-    <div class="container-fluid px-4">
-        <h1 class="mt-4">Dashboard</h1>
-        <ol class="breadcrumb mb-4">
-            <li class="breadcrumb-item active">Dashboard</li>
-        </ol>
+    <div class="container-fluid px-4 mt-4">
+        <h3 class="mb-4">Data Balita</h3>
 
-        <div class="row">
-            <div class="col-xl-3 col-md-6 mb-4">
-                <div class="card bg-primary text-white shadow h-100 py-2">
-                    <div class="card-body">Primary Card</div>
-                    <div class="card-footer d-flex align-items-center justify-content-between">
-                        <a class="small text-white stretched-link" href="#">View Details</a>
-                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                    </div>
-                </div>
+        <form method="GET" action="{{ route('balita.index') }}" class="mb-3">
+            <div class="input-group">
+                <input type="text" name="search" class="form-control" placeholder="Cari nama balita..." value="{{ request('search') }}">
+                <button class="btn btn-primary" type="submit">Cari</button>
             </div>
-            <div class="col-xl-3 col-md-6 mb-4">
-                <div class="card bg-warning text-white shadow h-100 py-2">
-                    <div class="card-body">Warning Card</div>
-                    <div class="card-footer d-flex align-items-center justify-content-between">
-                        <a class="small text-white stretched-link" href="#">View Details</a>
-                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-md-6 mb-4">
-                <div class="card bg-success text-white shadow h-100 py-2">
-                    <div class="card-body">Success Card</div>
-                    <div class="card-footer d-flex align-items-center justify-content-between">
-                        <a class="small text-white stretched-link" href="#">View Details</a>
-                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-md-6 mb-4">
-                <div class="card bg-danger text-white shadow h-100 py-2">
-                    <div class="card-body">Danger Card</div>
-                    <div class="card-footer d-flex align-items-center justify-content-between">
-                        <a class="small text-white stretched-link" href="#">View Details</a>
-                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        </form>
 
-        {{-- Chart dan Table --}}
-        <div class="row">
-            <div class="col-xl-6 mb-4">
-                <div class="card">
-                    <div class="card-header"><i class="fas fa-chart-area me-1"></i> Area Chart Example</div>
-                    <div class="card-body"><canvas id="myAreaChart" width="100%" height="40"></canvas></div>
-                </div>
-            </div>
-            <div class="col-xl-6 mb-4">
-                <div class="card">
-                    <div class="card-header"><i class="fas fa-chart-bar me-1"></i> Bar Chart Example</div>
-                    <div class="card-body"><canvas id="myBarChart" width="100%" height="40"></canvas></div>
-                </div>
-            </div>
-        </div>
 
-        {{-- Tabel --}}
-        <div class="card mb-4">
-            <div class="card-header"><i class="fas fa-table me-1"></i> DataTable Example</div>
+        @if(session('success'))
+            <div class="alert alert-success">{{ session('success') }}</div>
+        @endif
+
+        <div class="card">
             <div class="card-body">
-                <table id="datatablesSimple">
-                    <thead>
+                <table class="table table-bordered table-striped mb-0">
+                    <thead class="table-light">
                         <tr>
-                            <th>Name</th>
-                            <th>Position</th>
-                            <th>Office</th>
-                            <th>Age</th>
-                            <th>Start date</th>
-                            <th>Salary</th>
+                            <th>No</th>
+                            <th>Nama Balita</th>
+                            <th>Tanggal Lahir</th>
+                            <th>Jenis Kelamin</th>
+                            <th>Tinggi Badan (cm)</th>
+                            <th>Berat Badan (kg)</th>
+                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Tiger Nixon</td>
-                            <td>System Architect</td>
-                            <td>Edinburgh</td>
-                            <td>61</td>
-                            <td>2011/04/25</td>
-                            <td>$320,800</td>
-                        </tr>
-                        <tr>
-                            <td>Garrett Winters</td>
-                            <td>Accountant</td>
-                            <td>Tokyo</td>
-                            <td>63</td>
-                            <td>2011/07/25</td>
-                            <td>$170,750</td>
-                        </tr>
+                        @forelse ($balita as $index => $baby)
+                            <tr>
+                                <td>{{ $index + 1 }}</td>
+                                <td>{{ $baby->nama_balita }}</td>
+                                <td>{{ \Carbon\Carbon::parse($baby->tanggal_lahir)->format('d-m-Y') }}</td>
+                                <td>{{ $baby->jenis_kelamin }}</td>
+                                <td>{{ $baby->kunjunganTerakhir?->berat_badan ?? 'Belum ada data' }}</td>
+                                <td>{{ $baby->kunjunganTerakhir?->tinggi_badan ?? 'Belum ada data' }}</td>
+                                <td>
+                                    <a href="{{ route('balita.show', $baby->id_balita) }}" class="btn btn-sm btn-info">Lihat Detail</a>
+                                </td>
+                            </tr>
+                        @empty
+                            <tr>
+                                <td colspan="7" class="text-center">Belum ada data balita</td>
+                            </tr>
+                        @endforelse
                     </tbody>
                 </table>
             </div>

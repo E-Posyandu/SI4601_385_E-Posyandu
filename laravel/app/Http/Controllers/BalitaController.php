@@ -5,19 +5,32 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\balita;
 use App\Models\orangtua;
+use App\Models\visited;
+use Carbon\Carbon;
+use App\Models\ReportPerkembangan;
 
-class babyController extends Controller
+
+class BalitaController extends Controller
 {
     // fucntion untuk menampilkan data balita
-    public function index() {
-        $babies = balita::with('orangtua')->get();
-        return view('babies', compact('babies'));
+    public function index(Request $request) 
+    {
+        $keyword = $request->input('search');
+
+        $balita = balita::with(['orangtua', 'kunjunganTerakhir'])
+            ->when($keyword, function ($query) use ($keyword) {
+                $query->where('nama_balita', 'like', '%' . $keyword . '%');
+            })
+            ->get();
+
+        return view('admin-side.data-bayi.index', compact('balita'));
     }
+
 
     // function untuk create data balita
     public function create() {
         $orangtuas = orangtua::all();
-        return view('create', compact('orangtuas'));
+        return view('admin-side.data-bayi.create', compact('orangtuas'));
     }
 
     //function untuk menyimpan data balita
@@ -41,9 +54,9 @@ class babyController extends Controller
 
     // function untuk edit data balita
     public function edit($id) {
-        $baby = balita::findOrFail($id);
+        $balita = balita::findOrFail($id);
         $orangtuas = orangtua::all();
-        return view('edit', compact('baby', 'orangtuas'));
+        return view('edit', compact('balita', 'orangtuas'));
     }
 
     // function untuk update data balita
@@ -61,21 +74,38 @@ class babyController extends Controller
             'username' =>'required',
             'password' =>'required'
         ]);
-        $baby = balita::findOrFail($id);
-        $baby->update($request->all());
+        $balita = balita::findOrFail($id);
+        $balita->update($request->all());
         return redirect()->route('babies.index')->with('success', 'Data balita berhasil diupdate');
     }
 
     // function untuk delete data balita
     public function destroy($id) {
-        $baby = balita::findOrFail($id);
-        $baby->delete();
+        $balita = balita::findOrFail($id);
+        $balita->delete();
         return redirect()->route('babies.index')->with('success', 'Data balita berhasil dihapus');
     }
 
     // function untuk menampilkan data balita by Id
-    public function show($id) {
-        $baby = balita::findOrFail($id);
-        return view('show', compact('baby'));
+    public function show($id) 
+    {
+        $balita = balita::with('reportPerkembangan')->findOrFail($id);
+        $kunjungan = visited::where('id_balita', $id)
+            ->orderBy('tanggal_penimbangan')
+            ->get(['tanggal_penimbangan', 'berat_badan', 'tinggi_badan', 'lingkar_kepala'])
+            ->map(function ($item) {
+                $item->bulan = Carbon::parse($item->tanggal_penimbangan)->isoFormat('MMMM YYYY'); 
+                return $item;
+            });
+
+
+        // Ekstrak data untuk grafik
+        $labels = $kunjungan->pluck('bulan_penimbangan');
+        $berat = $kunjungan->pluck('berat_badan');
+        $tinggi = $kunjungan->pluck('tinggi_badan');
+        $lingkar = $kunjungan->pluck('lingkar_kepala');
+
+        return view('admin-side.data-bayi.show', compact('balita', 'kunjungan', 'labels', 'berat', 'tinggi', 'lingkar'));
     }
+
 }

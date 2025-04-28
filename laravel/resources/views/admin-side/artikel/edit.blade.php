@@ -15,27 +15,34 @@
             </div>
 
             <div class="mb-3">
-                <label for="isi" class="form-label">Isi Artikel</label>
-                <textarea name="content" id="content" class="form-control" rows="6" required>{{ $artikel->isi }}</textarea>
+                <label for="isi" class="form-label">Konten</label>
+                <textarea name="content" id="editor" class="form-control" rows="6" required>{{ $artikel->isi }}</textarea>
             </div>
 
-            <div class="mb-3">
-                <label for="is_show" class="form-label">Tampilkan</label>
+            <div class="mb-3 form-check">
                 <input type="checkbox" name="is_show" id="is_show" class="form-check-input" {{ $artikel->is_show ? 'checked' : '' }}>
+                <label for="is_show" class="form-check-label">Tampilkan</label>
             </div>
 
             <button type="submit" class="btn btn-primary">Simpan</button>
         </form>
     </div>
-    @endsection
+</div>
+@endsection
 
 @section('scripts')
-<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+<script src="https://cdn.ckeditor.com/ckeditor5/41.1.0/classic/ckeditor.js"></script>
 <script>
-    tinymce.init({
-        selector: '#content',
-        plugins: 'advlist autolink lists link image charmap print preview anchor',
-        toolbar: 'undo redo | formatselect | bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | help',
-    });
+    ClassicEditor
+        .create( document.querySelector( '#editor' ), {
+            toolbar: [
+                'heading', '|',
+                'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote', '|',
+                'undo', 'redo'
+            ]
+        })
+        .catch( error => {
+            console.error( error );
+        });
 </script>
 @endsection

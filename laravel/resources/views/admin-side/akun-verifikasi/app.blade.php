@@ -3,114 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>E-Posyandu </title>
+    <title>Akun Verifikasi</title>
+
+    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- FontAwesome CSS (penting untuk ikon!) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        body {
-            background-color: #ffffff;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        .sidebar {
-            background-color: #f8f9fa;
-            min-height: 100vh;
-            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
-        }
-        .sidebar-header {
-            padding: 20px;
-            text-align: center;
-            border-bottom: 1px solid #e9ecef;
-        }
-        .sidebar-logo {
-            max-width: 150px;
-            height: auto;
-            margin-bottom: 15px;
-        }
-        .nav-link {
-            color: #495057;
-            padding: 12px 20px;
-            border-radius: 5px;
-            margin: 5px 10px;
-        }
-        .nav-link:hover, .nav-link.active {
-            background-color: #e9ecef;
-            color: #0d6efd;
-        }
-        .nav-link i {
-            margin-right: 10px;
-            width: 20px;
-            text-align: center;
-        }
-        .main-content {
-            padding: 20px;
-            background-color: #ffffff;
-        }
-        .card {
-            border: none;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            margin-bottom: 20px;
-        }
-        .card-header {
-            background-color: #ffffff;
-            border-bottom: 1px solid #e9ecef;
-            font-weight: 600;
-        }
-    </style>
+
+    <!-- Tambahkan link CSS kamu sendiri di sini kalau ada -->
 </head>
-<body>
-    <div class="container-fluid">
-        <div class="row">
-            <!-- Sidebar -->
-            <div class="col-md-3 col-lg-2 d-md-block sidebar p-0">
-                <div class="sidebar-header">
-                    <img src="{{ asset('assets/jpg2png/logo.png') }}" alt="Posyandu Logo" class="sidebar-logo">
-                    
-                </div>
-                <ul class="nav flex-column">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#">
-                            <i class="fas fa-home"></i> Dashboard
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <i class="fas fa-user-check"></i> Akun Verifikasi
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <i class="fas fa-baby"></i> Data Bayi
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <i class="fas fa-calendar-alt"></i> Jadwal Kegiatan
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <i class="fas fa-newspaper"></i> Artikel & Edukasi
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <i class="fas fa-chart-line"></i> Update Perkembangan
-                        </a>
-                    </li>
-                </ul>
-            </div>
+<body class="sb-nav-fixed">
 
-            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 main-content">
-                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                    
-                </div>
+    <div id="layoutSidenav">
+        <!-- Sidebar -->
+        <div id="layoutSidenav_nav">
+            <nav class="sb-sidenav accordion sb-sidenav-light bg-white" id="sidenavAccordion">
+                <div class="sb-sidenav-menu">
+                    <div class="nav">
+                        <!-- Sidebar -->
+                        <a class="nav-link {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}" href="{{ route('admin.dashboard') }}">
+                            <img src="{{ asset('assets/home.png') }}" alt="Logo" style="height: 25px; margin-right: 8px;">
+                            Dashboard
+                        </a>
 
-                @yield('content')
+                        <!-- Tambahan lainnya -->
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+        <!-- Main Content -->
+        <div id="layoutSidenav_content">
+            <main>
+                <div class="container-fluid px-4 py-4">
+                    @yield('content')
+                </div>
             </main>
         </div>
     </div>
 
+    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Tambahkan link JS kamu sendiri di sini kalau ada -->
 </body>
 </html>

@@ -9,8 +9,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class visited extends Model
 {
     use HasFactory;
-    protected $table = 'visited';
-    protected $primaryKey = 'id_visited';
+    protected $table = 'table_visited';
+    protected $primaryKey = 'id_kunjungan';
 
     protected $fillable = [
         'tanggal_penimbangan',

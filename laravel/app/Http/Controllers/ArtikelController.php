@@ -35,6 +35,12 @@ class ArtikelController extends Controller
         return redirect()->route('artikel.index')->with('success', 'Artikel berhasil disimpan');
     }
 
+    public function show($id)
+    {
+        $artikel = Artikel::findOrFail($id);
+        return view('admin-side.artikel.show', compact('artikel'));
+    }
+
     public function edit($id)
     {
         $artikel = Artikel::findOrFail($id);

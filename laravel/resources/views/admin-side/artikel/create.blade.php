@@ -18,8 +18,8 @@
             </div>
 
             <div class="mb-3">
-                <label for="content" class="form-label">Konten</label>
-                <textarea name="isi" id="content" class="form-control" rows="6" required></textarea>
+                <label for="isi" class="form-label">Konten</label>
+                <textarea name="isi" id="editor" class="form-control" rows="6"></textarea>
             </div>
 
             <button type="submit" class="btn btn-primary">Simpan</button>
@@ -29,12 +29,25 @@
 @endsection
 
 @section('scripts')
-<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+<!-- Load TinyMCE dari CDN TinyCloud -->
+<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+
 <script>
     tinymce.init({
-        selector: '#content',
-        plugins: 'advlist autolink lists link image charmap print preview anchor',
-        toolbar: 'undo redo | formatselect | bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | help',
+        selector: '#editor',  // Target id textarea
+        height: 400,
+        menubar: false,
+        plugins: [
+            'advlist autolink lists link image charmap preview anchor',
+            'searchreplace visualblocks code fullscreen',
+            'insertdatetime media table code help wordcount'
+        ],
+        toolbar: 'undo redo | formatselect | ' +
+                 'bold italic backcolor | alignleft aligncenter ' +
+                 'alignright alignjustify | bullist numlist outdent indent | ' +
+                 'removeformat | help',
+        content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
     });
 </script>
+
 @endsection

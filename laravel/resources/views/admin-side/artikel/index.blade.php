@@ -39,6 +39,8 @@
                                     @endif
                                 </td>
                                 <td>
+                                    <a href="{{ route('artikel.show', ['id' => $artikel->id_artikel]) }}" class="btn btn-info btn-sm rounded-3">Lihat</a>
+
                                     <a href="{{ route('artikel.edit', ['id' => $artikel->id_artikel]) }}" class="btn btn-warning btn-sm rounded-3">Edit</a>
 
                                     <form action="{{ route('artikel.destroy', ['id' => $artikel->id_artikel]) }}" method="POST" style="display:inline;" id="delete-form-{{ $artikel->id_artikel }}">
@@ -68,3 +70,4 @@
     }
 </script>
 @endsection
+

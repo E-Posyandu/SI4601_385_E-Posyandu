@@ -61,7 +61,7 @@
     <div class="card-body">
         @if($balitas->isEmpty())
             <div class="alert alert-info text-center">
-                Tidak ada data yang ditemukann.
+                Tidak ada data yang ditemukan.
             </div>
         @else
             <div class="table-responsive">
@@ -96,34 +96,36 @@
                                         <i class="fas fa-ellipsis-v"></i>
                                     </button>
                                     <ul class="dropdown-menu">
+<!-- 1. View - Redirect ke detail -->
+<li>
+    <a class="dropdown-item" href="{{ route('verifikasi-akun.show', $balita->id_balita) }}">
+        <i class="fas fa-eye me-2"></i> View
+    </a>
+</li>
+
+<!-- 2. Setujui - Update status -->
+<li>
+    <form action="{{ route('verifikasi-akun.update-status', $balita->id_balita) }}" method="POST">
+        @csrf
+        <input type="hidden" name="status" value="approved">
+        <button type="submit" class="dropdown-item text-success">
+            <i class="fas fa-check me-2"></i> Setujui
+        </button>
+    </form>
+</li>
+
+<!-- 3. Tolak - Update status -->
+<li>
+    <form action="{{ route('verifikasi-akun.update-status', $balita->id_balita) }}" method="POST">
+        @csrf
+        <input type="hidden" name="status" value="rejected">
+        <button type="submit" class="dropdown-item text-danger">
+            <i class="fas fa-times me-2"></i> Tolak
+        </button>
+    </form>
+</li>
                                         
-                                        <li>
-                                            <a class="dropdown-item" href="{{ route('verifikasi-akun.show', $balita->id_balita) }}">
-                                                <i class="fas fa-eye me-2"></i> View
-                                            </a>
-                                        </li>
-                                        
-                                     
-                                        <li>
-                                            <form action="{{ route('verifikasi-akun.update-status', $balita->id_balita) }}" method="POST">
-                                                @csrf
-                                                <input type="hidden" name="status" value="approved">
-                                                <button type="submit" class="dropdown-item text-success">
-                                                    <i class="fas fa-check me-2"></i> Setujui
-                                                </button>
-                                            </form>
-                                        </li>
-                                        
-                                        
-                                        <li>
-                                            <form action="{{ route('verifikasi-akun.update-status', $balita->id_balita) }}" method="POST">
-                                                @csrf
-                                                <input type="hidden" name="status" value="rejected">
-                                                <button type="submit" class="dropdown-item text-danger">
-                                                    <i class="fas fa-times me-2"></i> Tolak
-                                                </button>
-                                            </form>
-                                        </li>
+
                                     </ul>
                                 </div>
                             </td>
