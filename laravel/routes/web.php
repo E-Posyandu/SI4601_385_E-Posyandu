@@ -117,9 +117,12 @@ Route::prefix('jadwal-kegiatan')->group(function () {
 
     // Update jadwal kegiatan
     Route::put('/{jadwal}', [JadwalKegiatanController::class, 'update'])->name('jadwal-kegiatan.update');
+    
+    
 
     // Hapus jadwal kegiatan
     Route::delete('/{jadwal}', [JadwalKegiatanController::class, 'destroy'])->name('jadwal-kegiatan.destroy');
+    
 });
 
 // Report Perkembangan Bayi

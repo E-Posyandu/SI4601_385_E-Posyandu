@@ -4,20 +4,22 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Jadwal;
+use App\Models\petugas;
+use App\Models\Posyandu;
 
 class JadwalKegiatanController extends Controller
 {
-    // 1. Lihat daftar jadwal kegiatan
     public function index()
     {
         $jadwals = Jadwal::all();
         return view('admin-side.jadwal-kegiatan.index', compact('jadwals'));
     }
 
-    // 2. Form tambah jadwal kegiatan
     public function create()
     {
-        return view('admin-side.jadwal-kegiatan.create');
+        $petugas_kader = petugas::all(); 
+        $posyandus = Posyandu::all();          
+        return view('admin-side.jadwal-kegiatan.create', compact('petugas_kader', 'posyandus'));
     }
 
     // 3. Simpan jadwal kegiatan baru
@@ -27,8 +29,8 @@ class JadwalKegiatanController extends Controller
             'nama_kegiatan'    => 'required|string|max:255',
             'jenis_kegiatan'   => 'required|string|max:255',
             'tanggal_kegiatan' => 'required|date',
-            'id_petugasKader'  => 'required|integer',
-            'id_posyandu'      => 'required|integer',
+            'id_petugas_kader' => 'required|exists:table_petugas_kader,id_petugas_kader',
+            'id_posyandu'      => 'required|exists:table_posyandu,id_posyandu',
         ]);
 
         Jadwal::create($validated);
@@ -43,6 +45,7 @@ class JadwalKegiatanController extends Controller
         return view('admin-side.jadwal-kegiatan.edit', compact('jadwal'));
     }
 
+
     // 5. Update jadwal kegiatan
     public function update(Request $request, Jadwal $jadwal)
     {
@@ -50,8 +53,8 @@ class JadwalKegiatanController extends Controller
             'nama_kegiatan'    => 'required|string|max:255',
             'jenis_kegiatan'   => 'required|string|max:255',
             'tanggal_kegiatan' => 'required|date',
-            'id_petugasKader'  => 'required|integer',
-            'id_posyandu'      => 'required|integer',
+            'id_petugas_kader' => 'required|exists:table_petugas_kader,id_petugas_kader',
+            'id_posyandu'      => 'required|exists:table_posyandu,id_posyandu',
         ]);
 
         $jadwal->update($validated);

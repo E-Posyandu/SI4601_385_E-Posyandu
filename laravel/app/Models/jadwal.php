@@ -10,12 +10,16 @@ class Jadwal extends Model
     use HasFactory;
 
     protected $table = 'table_jadwal';
+    protected $primaryKey = 'id_jadwal';
+    public $incrementing = true; 
+    protected $keyType = 'int';
 
     protected $fillable = [
+        'id_jadwal',
         'nama_kegiatan',
         'jenis_kegiatan',
         'tanggal_kegiatan',
-        'id_petugasKader',
+        'id_petugas_kader',
         'id_posyandu',
     ];
 }
