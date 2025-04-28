@@ -8,7 +8,7 @@
                                 <img src="<?php echo e(asset('assets/home.png')); ?>" alt="Logo" style="height: 25px; margin-right: 8px;">
                                 Dashboard
                             </a>
-                            <a class="nav-link <?php echo e(request()->routeIs('accountVerification.index') ? 'active' : ''); ?>" href="<?php echo e(route('accountVerification.index')); ?>">
+                            <a class="nav-link <?php echo e(request()->routeIs('verifikasi-akun.index') ? 'active' : ''); ?>" href="<?php echo e(route('verifikasi-akun.index')); ?>">
                                 <img src="<?php echo e(asset('assets/user.png')); ?>" alt="Logo" style="height: 25px; margin-right: 8px;">
                                 Akun Verifikasi
                             </a>
