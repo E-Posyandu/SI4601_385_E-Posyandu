@@ -65,10 +65,10 @@ Route::get('/profile', [profileUserController::class, 'index'])->name('profile')
 Route::prefix('verifikasi-akun')->group(function () {
     Route::get('/', [VerifikasiAkunController::class, 'index'])
          ->name('verifikasi-akun.index'); // NAMA ROUTE
-    
+
     Route::get('/{id_balita}', [VerifikasiAkunController::class, 'show'])
          ->name('verifikasi-akun.show');
-    
+
     Route::post('/{id_balita}/update-status', [VerifikasiAkunController::class, 'updateStatus'])
          ->name('verifikasi-akun.update-status');
 });
@@ -123,12 +123,12 @@ Route::prefix('jadwal-kegiatan')->group(function () {
 
     // Update jadwal kegiatan
     Route::put('/{jadwal}', [JadwalKegiatanController::class, 'update'])->name('jadwal-kegiatan.update');
-    
-    
+
+
 
     // Hapus jadwal kegiatan
     Route::delete('/{jadwal}', [JadwalKegiatanController::class, 'destroy'])->name('jadwal-kegiatan.destroy');
-    
+
 });
 
 // Report Perkembangan Bayi
