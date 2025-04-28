@@ -27,13 +27,23 @@
                         </thead>
                         <tbody>
                             @forelse ($jadwals as $index => $item)
+                            <!-- <pre>{{ print_r($jadwals) }}</pre> -->
                                 <tr>
                                     <td>{{ $index + 1 }}</td>
                                     <td>{{ $item->nama_kegiatan }}</td>
                                     <td>{{ $item->jenis_kegiatan }}</td>
                                     <td>{{ $item->tanggal_kegiatan }}</td>
                                     <td>
-                                        <a href="{{ route('jadwal-kegiatan.edit', $item->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                                        @if (!empty($item->id_jadwal))
+                                            <a href="{{ route('jadwal-kegiatan.edit', ['jadwal' => $item->id_jadwal]) }}" class="btn btn-warning">Edit</a>
+                                            <form action="{{ route('jadwal-kegiatan.destroy', ['jadwal' => $item->id_jadwal]) }}" method="POST" style="display:inline;">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger">Delete</button>
+                                            </form>
+                                        @else
+                                            <span class="text-danger">ID tidak valid</span>
+                                        @endif
                                     </td>
                                 </tr>
                             @empty
