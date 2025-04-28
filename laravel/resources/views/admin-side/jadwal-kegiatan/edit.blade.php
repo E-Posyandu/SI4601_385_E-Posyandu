@@ -49,9 +49,9 @@
 
                     <!-- id_petugasKader -->
                     <div class="mb-3">
-                        <label for="id_petugasKader" class="form-label">Petugas</label>
-                        <input type="number" class="form-control" id="id_petugasKader" name="id_petugasKader" value="{{ old('id_petugasKader', $jadwal->id_petugasKader) }}" required>
-                        @error('id_petugasKader')
+                        <label for="id_petugas_kader" class="form-label">Petugas</label>
+                        <input type="number" class="form-control" id="id_petugas_kader" name="id_petugas_kader" value="{{ old('id_petugas_kader', $jadwal->id_petugas_kader) }}" required>
+                        @error('id_petugas_kader')
                             <div class="text-danger">{{ $message }}</div>
                         @enderror
                     </div>
