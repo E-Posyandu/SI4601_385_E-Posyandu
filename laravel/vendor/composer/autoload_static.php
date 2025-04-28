@@ -336,8 +336,8 @@ class ComposerStaticInit88970a0117c062eed55fa8728fc43833
         ),
         'Psr\\Http\\Message\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/http-message/src',
-            1 => __DIR__ . '/..' . '/psr/http-factory/src',
+            0 => __DIR__ . '/..' . '/psr/http-factory/src',
+            1 => __DIR__ . '/..' . '/psr/http-message/src',
         ),
         'Psr\\Http\\Client\\' => 
         array (
@@ -377,8 +377,8 @@ class ComposerStaticInit88970a0117c062eed55fa8728fc43833
         ),
         'League\\Uri\\' => 
         array (
-            0 => __DIR__ . '/..' . '/league/uri',
-            1 => __DIR__ . '/..' . '/league/uri-interfaces',
+            0 => __DIR__ . '/..' . '/league/uri-interfaces',
+            1 => __DIR__ . '/..' . '/league/uri',
         ),
         'League\\MimeTypeDetection\\' => 
         array (
@@ -523,7 +523,6 @@ class ComposerStaticInit88970a0117c062eed55fa8728fc43833
         'App\\Http\\Controllers\\JadwalKegiatanController' => __DIR__ . '/../..' . '/app/Http/Controllers/JadwalKegiatanController.php',
         'App\\Http\\Controllers\\ReportPerkembanganController' => __DIR__ . '/../..' . '/app/Http/Controllers/ReportPerkembanganController.php',
         'App\\Http\\Controllers\\VerifikasiAkunController' => __DIR__ . '/../..' . '/app/Http/Controllers/VerifikasiAkunController.php',
-        'App\\Http\\Controllers\\VerifikasiController' => __DIR__ . '/../..' . '/app/Http/Controllers/VerifikasiController.php',
         'App\\Http\\Controllers\\dailyreportUserController' => __DIR__ . '/../..' . '/app/Http/Controllers/dailyreportUserController.php',
         'App\\Http\\Controllers\\dashboardUserController' => __DIR__ . '/../..' . '/app/Http/Controllers/dashboardUserController.php',
         'App\\Http\\Controllers\\eventUserController' => __DIR__ . '/../..' . '/app/Http/Controllers/eventUserController.php',
