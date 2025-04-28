@@ -60,12 +60,12 @@
                                     <td>{{ $balita->orangtua->email ?? '-' }}</td>
                                 </tr>
                                 <tr>
-                                    <td><strong>No.Telepon</strong></td>
+                                    <td><strong>No. Telepon</strong></td>
                                     <td>{{ $balita->orangtua->no_telp ?? '-' }}</td>
                                 </tr>
                             </table>
                         </div>
-                    </div> 
+                    </div>
                 </div>
             </div>
 
@@ -87,22 +87,22 @@
                     </div>
 
                     @if($balita->status_akun == 'waiting')
-                    <form action="{{ route('verifikasi-akun.update-status', $balita->id_balita) }}" method="POST">
-                        @csrf
-                        <div class="form-group">
-                            <label for="catatan">Catatan Verifikasi</label>
-                            <textarea name="catatan" id="catatan" class="form-control" rows="3"></textarea>
-                        </div>
-                        <div class="text-right mt-3">
-                            <button type="submit" name="status" value="approved" class="btn btn-success mr-2">
-                                <i class="fas fa-check"></i> Setujui
-                            </button>
-                            <button type="submit" name="status" value="rejected" class="btn btn-danger">
-                                <i class="fas fa-times"></i> Tolak
-                            </button>
-                        </div>
-                    </form>
-                    @endif
+<form action="{{ route('verifikasi-akun.update-status', $balita->id_balita) }}" method="POST">
+    @csrf
+    <div class="form-group">
+        <label for="catatan">Catatan Verifikasi</label>
+        <textarea name="catatan" id="catatan" class="form-control" rows="3"></textarea>
+    </div>
+    <div class="text-right mt-3">
+        <button type="submit" name="status" value="approved" class="btn btn-success mr-2">
+            <i class="fas fa-check"></i> Setujui
+        </button>
+        <button type="submit" name="status" value="rejected" class="btn btn-danger">
+            <i class="fas fa-times"></i> Tolak
+        </button>
+    </div>
+</form>
+@endif
                 </div>
             </div>
         </div>

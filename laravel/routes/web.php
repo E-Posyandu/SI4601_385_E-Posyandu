@@ -61,10 +61,16 @@ Route::get('/profile', [profileUserController::class, 'index'])->name('profile')
 // });
 
 
-// Account Verification
-Route::prefix('accountVerification')->group(function() {
-    Route::get('/', [VerifikasiController::class, 'index'])->name('accountVerification.index');
-    // Route::put('/{id}', [VerifikasiController::class, 'update'])->name('accountVerification.update');
+// Di dalam group middleware admin
+Route::prefix('verifikasi-akun')->group(function () {
+    Route::get('/', [VerifikasiAkunController::class, 'index'])
+         ->name('verifikasi-akun.index'); // NAMA ROUTE
+    
+    Route::get('/{id_balita}', [VerifikasiAkunController::class, 'show'])
+         ->name('verifikasi-akun.show');
+    
+    Route::post('/{id_balita}/update-status', [VerifikasiAkunController::class, 'updateStatus'])
+         ->name('verifikasi-akun.update-status');
 });
 
 

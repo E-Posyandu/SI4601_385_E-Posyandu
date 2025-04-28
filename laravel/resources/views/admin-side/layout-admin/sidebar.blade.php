@@ -8,7 +8,7 @@
                                 <img src="{{ asset('assets/home.png') }}" alt="Logo" style="height: 25px; margin-right: 8px;">
                                 Dashboard
                             </a>
-                            <a class="nav-link {{ request()->routeIs('accountVerification.index') ? 'active' : '' }}" href="{{ route('accountVerification.index') }}">
+                            <a class="nav-link {{ request()->routeIs('verifikasi-akun.index') ? 'active' : '' }}" href="{{ route('verifikasi-akun.index') }}">
                                 <img src="{{ asset('assets/user.png') }}" alt="Logo" style="height: 25px; margin-right: 8px;">
                                 Akun Verifikasi
                             </a>
