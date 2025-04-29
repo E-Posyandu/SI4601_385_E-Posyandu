@@ -11,7 +11,7 @@ class dailyreportUserController extends Controller
 {
     public function index(Request $request)
     {
-        $id_balita = 4; 
+        $id_balita = 1; 
         $selectedDate = $request->input('date', Carbon::today()->toDateString());
 
         $history = DailyReport::where('id_balita', $id_balita)
@@ -30,7 +30,7 @@ class dailyreportUserController extends Controller
 
     public function create()
     {
-        $id_balita = 4;
+        $id_balita = 1;
         $balita = Balita::find($id_balita);
     
         if (!$balita) {
@@ -48,7 +48,7 @@ class dailyreportUserController extends Controller
         ]);
 
         $dailyReport = DailyReport::create([
-            'id_balita' => 4,
+            'id_balita' => 1,
             'tanggal' => $request->tanggal,
             'catatan' => $request->catatan
         ]);
