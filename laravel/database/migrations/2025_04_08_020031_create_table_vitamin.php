@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('table_vitamin', function (Blueprint $table) {
             $table->id('id_vitamin');
             $table->string('nama_vitamin');
-            $table->date('tanggal_vitamin');
             $table->timestamps();
         });
     }

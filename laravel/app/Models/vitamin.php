@@ -5,17 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Vitamin extends Model
-{
+class Vitamin extends Model {
     use HasFactory;
-    protected $table = 'vitamins';
+    protected $table = 'table_vitamin';
     protected $primaryKey = 'id_vitamin';
-
+    
     protected $fillable = [
         'nama_vitamin',
-        'tanggal_vitamin'
     ];
-
+    
     // One vitamin belongs to one child
     public function balita()
     {

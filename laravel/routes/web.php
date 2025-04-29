@@ -14,6 +14,7 @@ use App\Http\Controllers\eventUserController;
 use App\Http\Controllers\profileUserController;
 use App\Http\Controllers\ReportPerkembanganController;
 use App\Http\Controllers\VerifikasiController;
+use App\Http\Controllers\VitaminController;
 
 // Authentication Routes
 Route::get('/', function () {
@@ -48,7 +49,25 @@ Route::prefix('user-side')->group(function () {
     });
 });
 
-// User Features Routes
+//vitamin con 
+// Daftar vitamin
+Route::get('/vitamin', [VitaminController::class, 'index'])->name('vitamin.index');
+
+// Form tambah vitamin
+Route::get('/vitamin/create', [VitaminController::class, 'create'])->name('vitamin.create');
+
+// Proses tambah vitamin
+Route::post('/vitamin', [VitaminController::class, 'store'])->name('vitamin.store');
+
+// Form edit vitamin - parameter 'id' akan digunakan controller untuk mencari berdasarkan id_vitamin
+Route::get('/vitamin/{id}/edit', [VitaminController::class, 'edit'])->name('vitamin.edit');
+
+// Proses update vitamin
+Route::put('/vitamin/{id}', [VitaminController::class, 'update'])->name('vitamin.update');
+
+// Hapus vitamin
+Route::delete('/vitamin/{id}', [VitaminController::class, 'destroy'])->name('vitamin.destroy');
+
 Route::get('/posyandureport', [posyandureportUserController::class, 'index'])->name('posyandureport');
 Route::get('/event', [eventUserController::class, 'index'])->name('event');
 Route::get('/profile', [profileUserController::class, 'index'])->name('profile');

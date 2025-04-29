@@ -27,7 +27,13 @@
                             <a class="nav-link {{ request()->routeIs('artikel.*') ? 'active' : '' }}" href="{{ route('artikel.index') }}">
                                 <img src="{{ asset('assets/News.png') }}" alt="Logo" style="height: 20px; margin-right: 8px;">
                                 Artikel & Edukasi
+
                             </a>
+                            <a class="nav-link {{ request()->routeIs('vitamin.*') ? 'active' : '' }}" href="{{ route('vitamin.index') }}"> 
+<img src="{{ asset('assets/News.png') }}" alt="Logo" style="height: 20px; margin-right: 8px;">
+Vitamin
+</a>
+
                             </div>
                     </div>
                 </nav>
