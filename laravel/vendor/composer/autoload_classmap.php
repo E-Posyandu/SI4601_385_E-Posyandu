@@ -6,6 +6,13 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
+    'App\\Actions\\ElaborateSummary' => $vendorDir . '/laravel/pint/app/Actions/ElaborateSummary.php',
+    'App\\Actions\\FixCode' => $vendorDir . '/laravel/pint/app/Actions/FixCode.php',
+    'App\\Commands\\DefaultCommand' => $vendorDir . '/laravel/pint/app/Commands/DefaultCommand.php',
+    'App\\Contracts\\PathsRepository' => $vendorDir . '/laravel/pint/app/Contracts/PathsRepository.php',
+    'App\\Exceptions\\HandleExceptions' => $vendorDir . '/laravel/pint/app/Exceptions/HandleExceptions.php',
+    'App\\Factories\\ConfigurationFactory' => $vendorDir . '/laravel/pint/app/Factories/ConfigurationFactory.php',
+    'App\\Factories\\ConfigurationResolverFactory' => $vendorDir . '/laravel/pint/app/Factories/ConfigurationResolverFactory.php',
     'App\\Http\\Controllers\\AdminController' => $baseDir . '/app/Http/Controllers/AdminController.php',
     'App\\Http\\Controllers\\ArtikelController' => $baseDir . '/app/Http/Controllers/ArtikelController.php',
     'App\\Http\\Controllers\\BalitaController' => $baseDir . '/app/Http/Controllers/BalitaController.php',
@@ -18,13 +25,27 @@ return array(
     'App\\Http\\Controllers\\eventUserController' => $baseDir . '/app/Http/Controllers/eventUserController.php',
     'App\\Http\\Controllers\\posyandureportUserController' => $baseDir . '/app/Http/Controllers/posyandureportUserController.php',
     'App\\Http\\Controllers\\profileUserController' => $baseDir . '/app/Http/Controllers/profileUserController.php',
+<<<<<<< HEAD
+    'App\\Kernel' => $vendorDir . '/laravel/pint/app/Kernel.php',
+=======
     'App\\Models\\ReportPerkembangan' => $baseDir . '/app/Models/ReportPerkembangan.php',
+>>>>>>> d0d29bcd298ad45edd49eb203df9d67f1ecc39bc
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',
     'App\\Models\\artikel' => $baseDir . '/app/Models/artikel.php',
     'App\\Models\\dailyreport' => $baseDir . '/app/Models/dailyreport.php',
     'App\\Models\\petugas' => $baseDir . '/app/Models/petugas.php',
     'App\\Models\\visited' => $baseDir . '/app/Models/visited.php',
+    'App\\Output\\Concerns\\InteractsWithSymbols' => $vendorDir . '/laravel/pint/app/Output/Concerns/InteractsWithSymbols.php',
+    'App\\Output\\ProgressOutput' => $vendorDir . '/laravel/pint/app/Output/ProgressOutput.php',
+    'App\\Output\\SummaryOutput' => $vendorDir . '/laravel/pint/app/Output/SummaryOutput.php',
+    'App\\Project' => $vendorDir . '/laravel/pint/app/Project.php',
+    'App\\Providers\\ActionsServiceProvider' => $vendorDir . '/laravel/pint/app/Providers/ActionsServiceProvider.php',
     'App\\Providers\\AppServiceProvider' => $baseDir . '/app/Providers/AppServiceProvider.php',
+    'App\\Providers\\CommandsServiceProvider' => $vendorDir . '/laravel/pint/app/Providers/CommandsServiceProvider.php',
+    'App\\Providers\\RepositoriesServiceProvider' => $vendorDir . '/laravel/pint/app/Providers/RepositoriesServiceProvider.php',
+    'App\\Repositories\\ConfigurationJsonRepository' => $vendorDir . '/laravel/pint/app/Repositories/ConfigurationJsonRepository.php',
+    'App\\Repositories\\GitPathsRepository' => $vendorDir . '/laravel/pint/app/Repositories/GitPathsRepository.php',
+    'App\\ValueObjects\\Issue' => $vendorDir . '/laravel/pint/app/ValueObjects/Issue.php',
     'Attribute' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
     'Brick\\Math\\BigDecimal' => $vendorDir . '/brick/math/src/BigDecimal.php',
     'Brick\\Math\\BigInteger' => $vendorDir . '/brick/math/src/BigInteger.php',

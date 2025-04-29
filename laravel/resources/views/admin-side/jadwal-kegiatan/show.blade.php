@@ -29,13 +29,13 @@
                 <!-- ID Petugas Kader -->
                 <div class="mb-3">
                     <label class="form-label">Petugas</label>
-                    <p class="form-control-plaintext">{{ $jadwalKegiatan->id_petugasKader }}</p>
+                    <p class="form-control-plaintext">{{ $jadwalKegiatan->nama_petugas }}</p>
                 </div>
 
                 <!-- ID Posyandu -->
                 <div class="mb-3">
                     <label class="form-label">Posyandu</label>
-                    <p class="form-control-plaintext">{{ $jadwalKegiatan->id_posyandu }}</p>
+                    <p class="form-control-plaintext">{{ $jadwalKegiatan->nama_posyandu }}</p>
                 </div>
 
                 <!-- Tombol Kembali -->

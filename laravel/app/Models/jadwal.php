@@ -22,4 +22,5 @@ class Jadwal extends Model
         'id_petugas_kader',
         'id_posyandu',
     ];
+    
 }
