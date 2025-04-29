@@ -19,28 +19,11 @@
 
             <div class="mb-3">
                 <label for="isi" class="form-label">Konten</label>
-                <textarea name="isi" id="editor" class="form-control" rows="6"></textarea>
+                <textarea name="isi" id="isi" class="form-control" rows="6" required></textarea>
             </div>
 
             <button type="submit" class="btn btn-primary">Simpan</button>
         </form>
     </div>
 </div>
-@endsection
-
-@section('scripts')
-<script src="https://cdn.ckeditor.com/ckeditor5/41.1.0/classic/ckeditor.js"></script>
-<script>
-    ClassicEditor
-        .create( document.querySelector( '#editor' ), {
-            toolbar: [
-                'heading', '|',
-                'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote', '|',
-                'undo', 'redo'
-            ]
-        })
-        .catch( error => {
-            console.error( error );
-        });
-</script>
 @endsection
