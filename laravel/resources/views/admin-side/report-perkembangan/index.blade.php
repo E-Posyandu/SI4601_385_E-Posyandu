@@ -27,11 +27,15 @@
                 <div class="mb-3">
                     <label for="id_balita" class="form-label">Nama Balita</label>
                     <select name="id_balita" id="id_balita" class="form-select" required>
-                        <option selected disabled>Pilih balita</option>
+                        <option disabled {{ request('id_balita') ? '' : 'selected' }}>Pilih balita</option>
                         @foreach($balita as $baby)
-                            <option value="{{ $baby->id_balita }}">{{ $baby->nama_balita }}</option>
+                            <option value="{{ $baby->id_balita }}" {{ request('id_balita') == $baby->id_balita ? 'selected' : '' }}>
+                                {{ $baby->nama_balita }}
+                            </option>
                         @endforeach
                     </select>
+
+
                 </div>
 
                 <div class="mb-3">
