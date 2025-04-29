@@ -17,6 +17,7 @@ class VerifikasiTest extends DuskTestCase
                     ->click('@approve-button') // klik 'Setujui'
                     ->pause(1000)
                     ->assertSee('Disetujui'); // pastikan ada tulisan status 'Disetujui'
+        
         });
     }
 }
