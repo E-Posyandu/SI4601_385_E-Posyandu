@@ -3451,3 +3451,13 @@
 #74 C:\\XAMPP\\htdocs\\SI4601_385_E-Posyandu\\laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\resources\\server.php(23): require_once('...')
 #75 {main}
 "} 
+[2025-04-29 03:53:22] local.ERROR: There are no commands defined in the "dusk:" namespace. {"exception":"[object] (Symfony\\Component\\Console\\Exception\\NamespaceNotFoundException(code: 0): There are no commands defined in the \"dusk:\" namespace. at C:\\laragon\\www\\SI4601_385_E-Posyandu\\laravel\\vendor\\symfony\\console\\Application.php:660)
+[stacktrace]
+#0 C:\\laragon\\www\\SI4601_385_E-Posyandu\\laravel\\vendor\\symfony\\console\\Application.php(709): Symfony\\Component\\Console\\Application->findNamespace('dusk:')
+#1 C:\\laragon\\www\\SI4601_385_E-Posyandu\\laravel\\vendor\\symfony\\console\\Application.php(284): Symfony\\Component\\Console\\Application->find('dusk::install')
+#2 C:\\laragon\\www\\SI4601_385_E-Posyandu\\laravel\\vendor\\symfony\\console\\Application.php(193): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#3 C:\\laragon\\www\\SI4601_385_E-Posyandu\\laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(197): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#4 C:\\laragon\\www\\SI4601_385_E-Posyandu\\laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1234): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#5 C:\\laragon\\www\\SI4601_385_E-Posyandu\\laravel\\artisan(16): Illuminate\\Foundation\\Application->handleCommand(Object(Symfony\\Component\\Console\\Input\\ArgvInput))
+#6 {main}
+"} 
