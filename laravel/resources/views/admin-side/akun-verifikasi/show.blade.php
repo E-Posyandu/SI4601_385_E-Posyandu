@@ -1,4 +1,4 @@
-@extends('admin-side.akun-verifikasi.app')
+@extends('admin-side.layout-admin.app')
 
 @section('content')
 <div class="container-fluid">
