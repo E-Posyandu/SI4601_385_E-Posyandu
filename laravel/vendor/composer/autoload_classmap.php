@@ -25,11 +25,8 @@ return array(
     'App\\Http\\Controllers\\eventUserController' => $baseDir . '/app/Http/Controllers/eventUserController.php',
     'App\\Http\\Controllers\\posyandureportUserController' => $baseDir . '/app/Http/Controllers/posyandureportUserController.php',
     'App\\Http\\Controllers\\profileUserController' => $baseDir . '/app/Http/Controllers/profileUserController.php',
-<<<<<<< HEAD
     'App\\Kernel' => $vendorDir . '/laravel/pint/app/Kernel.php',
-=======
     'App\\Models\\ReportPerkembangan' => $baseDir . '/app/Models/ReportPerkembangan.php',
->>>>>>> d0d29bcd298ad45edd49eb203df9d67f1ecc39bc
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',
     'App\\Models\\artikel' => $baseDir . '/app/Models/artikel.php',
     'App\\Models\\dailyreport' => $baseDir . '/app/Models/dailyreport.php',
