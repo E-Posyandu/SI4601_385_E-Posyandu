@@ -1,4 +1,4 @@
-@extends('admin-side.akun-verifikasi.app')
+@extends('admin-side.layout-admin.app')
 
 @section('content')
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
@@ -13,7 +13,7 @@
             <div class="search-box me-3">
                 <form action="{{ route('verifikasi-akun.index') }}" method="GET">
                     <div class="input-group">
-                        <input type="text" class="form-control" name="search" placeholder="Cari nama/email/NIK..." 
+                        <input type="text" class="form-control" name="search" placeholder="Cari nama/email/NIK..."
                                value="{{ request('search') }}">
                         <button class="btn btn-outline-secondary" type="submit">
                             <i class="fas fa-search"></i>
@@ -21,34 +21,34 @@
                     </div>
                 </form>
             </div>
-            
+
             <!-- Filter Dropdown -->
             <div class="dropdown">
-                <button class="btn btn-outline-secondary dropdown-toggle" type="button" 
+                <button class="btn btn-outline-secondary dropdown-toggle" type="button"
                         id="filterDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                     <i class="fas fa-filter"></i> Filter
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="filterDropdown">
                     <li>
-                        <a class="dropdown-item {{ !request('status') ? 'active' : '' }}" 
+                        <a class="dropdown-item {{ !request('status') ? 'active' : '' }}"
                            href="{{ route('verifikasi-akun.index') }}">
                             Semua Status
                         </a>
                     </li>
                     <li>
-                        <a class="dropdown-item {{ request('status') == 'waiting' ? 'active' : '' }}" 
+                        <a class="dropdown-item {{ request('status') == 'waiting' ? 'active' : '' }}"
                            href="{{ route('verifikasi-akun.index', ['status' => 'waiting']) }}">
                             <span class="badge bg-warning me-1">●</span> Menunggu
                         </a>
                     </li>
                     <li>
-                        <a class="dropdown-item {{ request('status') == 'approved' ? 'active' : '' }}" 
+                        <a class="dropdown-item {{ request('status') == 'approved' ? 'active' : '' }}"
                            href="{{ route('verifikasi-akun.index', ['status' => 'approved']) }}">
                             <span class="badge bg-success me-1">●</span> Disetujui
                         </a>
                     </li>
                     <li>
-                        <a class="dropdown-item {{ request('status') == 'rejected' ? 'active' : '' }}" 
+                        <a class="dropdown-item {{ request('status') == 'rejected' ? 'active' : '' }}"
                            href="{{ route('verifikasi-akun.index', ['status' => 'rejected']) }}">
                             <span class="badge bg-danger me-1">●</span> Ditolak
                         </a>
@@ -139,3 +139,4 @@
     </div>
 </div>
 @endsection
+
