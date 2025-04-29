@@ -20,7 +20,6 @@ return array(
     'App\\Http\\Controllers\\JadwalKegiatanController' => $baseDir . '/app/Http/Controllers/JadwalKegiatanController.php',
     'App\\Http\\Controllers\\ReportPerkembanganController' => $baseDir . '/app/Http/Controllers/ReportPerkembanganController.php',
     'App\\Http\\Controllers\\VerifikasiAkunController' => $baseDir . '/app/Http/Controllers/VerifikasiAkunController.php',
-    'App\\Http\\Controllers\\VerifikasiController' => $baseDir . '/app/Http/Controllers/VerifikasiController.php',
     'App\\Http\\Controllers\\dailyreportUserController' => $baseDir . '/app/Http/Controllers/dailyreportUserController.php',
     'App\\Http\\Controllers\\dashboardUserController' => $baseDir . '/app/Http/Controllers/dashboardUserController.php',
     'App\\Http\\Controllers\\eventUserController' => $baseDir . '/app/Http/Controllers/eventUserController.php',
