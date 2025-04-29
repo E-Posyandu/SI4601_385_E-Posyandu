@@ -46,7 +46,7 @@
                                     <form action="{{ route('artikel.destroy', ['id' => $artikel->id_artikel]) }}" method="POST" style="display:inline;" id="delete-form-{{ $artikel->id_artikel }}">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="button" class="btn btn-danger btn-sm rounded-3" onclick="confirmDelete({{ $artikel->id_artikel }})">Hapus</button>
+                                        <button type="button" class="btn btn-danger btn-sm rounded-3" onclick="confirmDelete({{ $artikel->id_artikel }})" dusk="delete-button-{{ $artikel->id_artikel }}">Hapus</button>
                                     </form>
                                 </td>
                             </tr>
