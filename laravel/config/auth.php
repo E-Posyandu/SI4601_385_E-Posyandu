@@ -68,10 +68,9 @@ return [
 'providers' => [
     'users' => [
         'driver' => 'eloquent',
-        'model' => App\Models\User::class,
+        'model' => App\Models\Balita::class, // Must be Balita, not User
     ],
-
-    'admins' => [ // <<< Tambah ini
+    'admins' => [
         'driver' => 'eloquent',
         'model' => App\Models\Admin::class,
     ],

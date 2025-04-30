@@ -2,14 +2,15 @@
 
 namespace App\Models;
 
-
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Notifications\Notifiable;
 use App\Models\ReportPerkembangan;
 
-class Balita extends Model
+class Balita extends Authenticatable
 {
-    use HasFactory;
+    use HasFactory, Notifiable;
+    
     protected $table = 'table_balita';
     protected $primaryKey = 'id_balita';
 
@@ -27,35 +28,31 @@ class Balita extends Model
         'status_akun', 
     ];
 
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
+
     protected $dates = [
         'tanggal_lahir', 
     ];
 
+    // Add authentication identifier methods
+    public function getAuthIdentifierName()
+    {
+        return 'username';
+    }
+
+    public function getAuthPassword()
+    {
+        return $this->password;
+    }
+
+    // Your existing relationships
     public function orangtua()
     {
         return $this->belongsTo(Orangtua::class, 'id_orangtua');
     }
 
-    public function vaksin()
-    {
-        return $this->belongsTo(Vaksin::class, 'id_vaksin');
-        // Tambahkan third parameter jika id yang dirujuk bukan 'id' di tabel vaksin
-    }
-
-    public function vitamin()
-    {
-        return $this->belongsTo(Vitamin::class, 'id_vitamin');
-    }
-
-    public function kunjunganTerakhir()
-    {
-        return $this->hasOne(Visited::class, 'id_balita', 'id_balita')->latestOfMany('tanggal_penimbangan');
-    }
-
-    
-    public function reportPerkembangan()
-    {
-        return $this->hasMany(ReportPerkembangan::class, 'id_balita', 'id_balita');
-    }
-
+    // ... rest of your relationship methods ...
 }
