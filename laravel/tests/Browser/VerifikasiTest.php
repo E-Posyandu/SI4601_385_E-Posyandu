@@ -81,10 +81,11 @@ class VerifikasiTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/verifikasi-akun')
-            ->type('@search-input', 'Nama Balita')
-            ->press('@search-button')
-            ->pause(1000)
-            ->assertSee('Nama Balita');
+                ->type('@search-input', '3175091203200001') // NIK Raisa
+                ->press('@search-button')
+                ->pause(1000)
+                ->assertSee('Raisa Putri'); // Pastikan hasil pencarian menampilkan nama sesuai NIK
         });
     }
+    
 }
