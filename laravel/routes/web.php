@@ -17,24 +17,53 @@ use App\Http\Controllers\VerifikasiController;
 use App\Http\Controllers\VisitedController;
 use App\Http\Controllers\PosyanduController;
 
-// Authentication Routes
+// AUTH
+use App\Http\Controllers\Auth\AuthKaderController;
+use App\Http\Controllers\Auth\AuthUserController;
+
+// TAMPILAN INDEX LANDING PAGE ALL 
 Route::get('/', function () {
-    if (Auth::check()) {
-        if (Auth::user()->role == 'admin') {
-            return redirect()->route('admin.dashboard');
-        } else {
-            return redirect()->route('dashboard');
-        }
-    }
-    return redirect()->route('login');
+    return view('index');
 });
 
+// LOGIN ADMIN
 Route::get('/login', [AdminController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AdminController::class, 'login']);
 Route::post('/logout', [AdminController::class, 'logout'])->name('admin.logout');
 
+// LOGIN KADER
+Route::group(['prefix' => 'kader'], function () {
+    Route::get('/login', [AuthKaderController::class, 'showLoginForm'])->name('kader.login');
+    Route::post('/login', [AuthKaderController::class, 'login'])->name('kader.login.submit');
+    Route::get('/register', [AuthKaderController::class, 'showRegistrationForm'])->name('kader.register');
+    Route::post('/register', [AuthKaderController::class, 'register'])->name('kader.register.submit');
+    Route::post('/logout', [AuthKaderController::class, 'logout'])->name('kader.logout');
+});
+
+// LOGIN USER
+Route::group(['prefix' => 'user'], function () {
+    Route::get('/login', [AuthUserController::class, 'showLoginForm'])->name('user.login');
+    Route::post('/login', [AuthUserController::class, 'login'])->name('user.login.submit');
+    Route::get('/register', [AuthUserController::class, 'showRegistrationForm'])->name('user.register');
+    Route::post('/register', [AuthUserController::class, 'register'])->name('user.register.submit');
+    Route::post('/logout', [AuthUserController::class, 'logout'])->name('user.logout');
+
+    // ROUTING DASHBOARD
+
+    // ROUTING FITUR DAILY REPORT
+
+    // ROUTING FITUR REPORT POSYANDU
+
+    // ROUTING JADWAL POSYANDU
+
+    // ROUTING PROFILE
+    
+});
+
+
 // Dashboard Routes
-Route::get('/dashboard', [dashboardUserController::class, 'index'])->middleware('auth')->name('dashboard');
+// Route::get('/dashboard', [dashboardUserController::class, 'index'])->middleware('auth')->name('dashboard');
+Route::get('/dashboard', [dashboardUserController::class, 'index'])->name('dashboard');
 Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->middleware(['auth', 'admin'])->name('admin.dashboard');
 
 // User-side Routes
