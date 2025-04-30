@@ -33,7 +33,7 @@
 
                     <div class="mb-3">
                         <label for="id_balita" class="form-label">Nama Balita</label>
-                        <select name="id_balita" id="id_balita" class="form-control" required>
+                        <select name="id_balita" id="id_balita" class="form-control" dusk="id-balita" required>
                             <option value="">-- Pilih Balita --</option>
                             @foreach($balitas as $balita)
                                 <option value="{{ $balita->id_balita}}">{{ $balita->nama_balita }}</option>

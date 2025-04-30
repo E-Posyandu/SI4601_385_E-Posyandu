@@ -9,7 +9,7 @@
 
         {{-- Tombol Tambah --}}
         <div class="mb-3 text-end">
-            <a href="{{ route('posyandu.create') }}" class="btn btn-success">+ Tambah Posyandu</a>
+            <a href="{{ route('posyandu.create') }}" class="btn btn-success" dusk="tambah-posyandu">+ Tambah Posyandu</a>
         </div>
 
         {{-- Flash Message --}}
@@ -38,11 +38,11 @@
                                 <td>{{ $posyandu->alamat_posyandu }}</td>
                                 <td>{{ $posyandu->admin->id_admin }}</td>
                                 <td>
-                                    <a href="{{ route('posyandu.edit', $posyandu->id_posyandu) }}" class="btn btn-sm btn-primary">Edit</a>
+                                    <a href="{{ route('posyandu.edit', $posyandu->id_posyandu) }}" class="btn btn-sm btn-primary" dusk="edit-posyandu">Edit</a>
                                     <form action="{{ route('posyandu.destroy', $posyandu->id_posyandu) }}" method="POST" class="d-inline" onsubmit="return confirm('Yakin ingin menghapus?')">
                                         @csrf
                                         @method('DELETE')
-                                        <button class="btn btn-sm btn-danger">Hapus</button>
+                                        <button class="btn btn-sm btn-danger" dusk="delete-posyandu-{{ $posyandu->id_posyandu }}">Hapus</button>
                                     </form>
                                 </td>
                             </tr>

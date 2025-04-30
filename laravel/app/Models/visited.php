@@ -32,6 +32,7 @@ class visited extends Model
         return $this->belongsTo(Balita::class, 'id_balita');
     }
 
+
     // Define relationship with Posyandu model (One-to-One)
     public function posyandu()
     {

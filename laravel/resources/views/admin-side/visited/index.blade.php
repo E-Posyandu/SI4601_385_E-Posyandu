@@ -17,9 +17,7 @@
 
         {{-- Tombol Tambah Data --}}
         <div class="mb-3 text-end">
-            <a href="{{ route('visited.create') }}" class="btn btn-success">
-                + Tambah Kunjungan
-            </a>
+            <a href="{{ route('visited.create') }}" class="btn btn-success" dusk="tambah-visited">+ Tambah Kunjungan</a>
         </div>
 
         {{-- Session Flash Messages --}}
@@ -60,12 +58,12 @@
                                 <td>{{ $visit->posyandu->nama_posyandu ?? '-' }}</td>
                                 <td>{{ $visit->petugas->nama_petugas ?? '-' }}</td>
                                 <td>
-                                    <a href="{{ route('visited.edit', $visit->id_kunjungan) }}" class="btn btn-sm btn-warning">Edit</a>
+                                    <a href="{{ route('visited.edit', $visit->id_kunjungan) }}" dusk=edit-visited class="btn btn-sm btn-warning">Edit</a>
 
                                     <form action="{{ route('visited.destroy', $visit->id_kunjungan) }}" method="POST" class="d-inline" onsubmit="return confirm('Yakin ingin menghapus data ini?')">
                                         @csrf
                                         @method('DELETE')
-                                        <button class="btn btn-sm btn-danger" type="submit">Delete</button>
+                                        <button class="btn btn-sm btn-danger" dusk="delete-kunjungan-{{ $visit->id_kunjungan }}">Hapus</button>
                                     </form>
                                 </td>
 

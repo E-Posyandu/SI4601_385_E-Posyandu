@@ -54,5 +54,14 @@ class Balita extends Authenticatable
         return $this->belongsTo(Orangtua::class, 'id_orangtua');
     }
 
-    // ... rest of your relationship methods ...
+    public function kunjunganTerakhir()
+    {
+        return $this->hasOne(Visited::class, 'id_balita')
+                    ->latestOfMany('tanggal_penimbangan');
+    }
+
+    public function reportPerkembangan()
+    {
+        return $this->hasMany(ReportPerkembangan::class, 'id_balita');
+    }
 }
