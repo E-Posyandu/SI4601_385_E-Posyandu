@@ -40,7 +40,7 @@
         @endif
 
         <!-- Tombol Tambah -->
-        <a href="{{ route('user-side.dailyReport.create', ['id_balita' => $balita->id_balita]) }}" class="btn btn-info position-fixed" style="bottom: 20px; right: 20px;">
+        <a href="{{ route('user-side.dailyReport.create', ['id_balita' => $balita->id_balita]) }}" dusk='tambahreport' class="btn btn-info position-fixed" style="bottom: 20px; right: 20px;">
             <i class="fas fa-plus"></i> Tambah Laporan
         </a>
     </div>
