@@ -30,8 +30,12 @@
 
                             </a>
                             <a class="nav-link {{ request()->routeIs('vitamin.*') ? 'active' : '' }}" href="{{ route('vitamin.index') }}"> 
-<img src="{{ asset('assets/News.png') }}" alt="Logo" style="height: 20px; margin-right: 8px;">
+<img src="{{ asset('assets/supp.png') }}" alt="Logo" style="height: 20px; margin-right: 8px;">
 Vitamin
+</a>
+<a class="nav-link {{ request()->routeIs('vaksin.*') ? 'active' : '' }}" href="{{ route('vaksin.index') }}"> 
+<img src="{{ asset('assets/vaccine.png') }}" alt="Logo" style="height: 20px; margin-right: 8px;">
+Vaksin
 </a>
 
                             </div>

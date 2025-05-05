@@ -1,4 +1,4 @@
-@extends('admin-side.vitamin.app')
+@extends('admin-side.layout-admin.app')
 
 @section('title', 'Edit Vitamin')
 

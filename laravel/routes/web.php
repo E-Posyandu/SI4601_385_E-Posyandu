@@ -15,6 +15,8 @@ use App\Http\Controllers\profileUserController;
 use App\Http\Controllers\ReportPerkembanganController;
 use App\Http\Controllers\VerifikasiController;
 use App\Http\Controllers\VitaminController;
+use App\Http\Controllers\VaksinController;
+
 
 // Authentication Routes
 Route::get('/', function () {
@@ -116,7 +118,7 @@ Route::prefix('DataBalita')->group(function() {
     Route::put('/{id}', [BalitaController::class, 'update'])->name('balita.update');
     Route::delete('/{id}', [BalitaController::class, 'destroy'])->name('balita.destroy');
 });
-
+Route::resource('vaksin', VaksinController::class);
 // Admin Verification Routes
 //Route::prefix('admin')->group(function() {
 //    Route::get('/verifikasi-akun', [VerifikasiAdminController::class, 'index'])->name('verifikasi-akun.index');
@@ -143,7 +145,7 @@ Route::prefix('jadwal-kegiatan')->group(function () {
     // Update jadwal kegiatan
     Route::put('/{jadwal}', [JadwalKegiatanController::class, 'update'])->name('jadwal-kegiatan.update');
 
-
+Route::resource('vaksin', VaksinController::class);
 
     // Hapus jadwal kegiatan
     Route::delete('/{jadwal}', [JadwalKegiatanController::class, 'destroy'])->name('jadwal-kegiatan.destroy');

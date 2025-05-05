@@ -1,5 +1,4 @@
-<!-- resources/views/admin-side/vitamin/create.blade.php -->
-@extends('admin-side.vitamin.app')
+@extends('admin-side.layout-admin.app')
 
 @section('title', 'Tambah Vitamin')
 
