@@ -16,6 +16,7 @@ use App\Http\Controllers\ReportPerkembanganController;
 use App\Http\Controllers\VerifikasiController;
 use App\Http\Controllers\VisitedController;
 use App\Http\Controllers\PosyanduController;
+use App\Http\Controllers\KaderController;
 
 // AUTH
 use App\Http\Controllers\Auth\AuthKaderController;
@@ -38,6 +39,7 @@ Route::group(['prefix' => 'kader'], function () {
     Route::get('/register', [AuthKaderController::class, 'showRegistrationForm'])->name('kader.register');
     Route::post('/register', [AuthKaderController::class, 'register'])->name('kader.register.submit');
     Route::post('/logout', [AuthKaderController::class, 'logout'])->name('kader.logout');
+    Route::get('/dashboard', [KaderController::class, 'index'])->name('kader-side.dashboard');
 });
 
 // LOGIN USER
