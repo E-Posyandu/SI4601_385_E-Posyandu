@@ -3,9 +3,7 @@
         'name' => 'laravel/laravel',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => 'ee53964391a9354c3efd9bd6255d6911e6dbd0e9',
-        'reference' => 'c071b622e224d57b4e5b405804656f8771e0a15e',
-        'reference' => '1a74c196411f6578df6847d0b2d77567392ea2d8',
+        'reference' => '1e76aaec925c1f78d5d80e5dfc90d13f1ccfbf75',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -88,7 +86,7 @@
             'dev_requirement' => false,
         ),
         'facebook/webdriver' => array(
-            'dev_requirement' => true,
+            'dev_requirement' => false,
             'replaced' => array(
                 0 => '*',
             ),
@@ -405,9 +403,7 @@
         'laravel/laravel' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => 'ee53964391a9354c3efd9bd6255d6911e6dbd0e9',
-            'reference' => 'c071b622e224d57b4e5b405804656f8771e0a15e',
-            'reference' => '1a74c196411f6578df6847d0b2d77567392ea2d8',
+            'reference' => '1e76aaec925c1f78d5d80e5dfc90d13f1ccfbf75',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -642,7 +638,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../php-webdriver/webdriver',
             'aliases' => array(),
-            'dev_requirement' => true,
+            'dev_requirement' => false,
         ),
         'phpoption/phpoption' => array(
             'pretty_version' => '1.9.3',

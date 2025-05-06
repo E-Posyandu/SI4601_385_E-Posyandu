@@ -19,7 +19,7 @@ class Posyandu extends Model
     // Relationship with Admin (One-to-One)
     public function admin()
     {
-        return $this->belongsTo(Admin::class, 'id_admin', 'id');
+        return $this->belongsTo(admin::class, 'id_admin', 'id_admin');
     }
 
     // Relationship with Kunjungan (One-to-Many)

@@ -32,7 +32,7 @@
 
                     <!-- Login/Register Buttons -->
                     <div class="hidden lg:flex space-x-4">
-                        <a href="{{ route('user.login') }}" class="bg-blue-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-blue-700 transition-colors">Masuk</a>
+                        <a href="{{ route('user.login') }}" dusk='loginuserbutton' class="bg-blue-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-blue-700 transition-colors">Masuk</a>
                         <a href="{{ route('user.register') }}" class="border-2 border-blue-600 text-blue-600 px-4 py-2 rounded-lg font-semibold hover:bg-blue-600 hover:text-white transition-colors">Daftar</a>
                     </div>
                 </div>

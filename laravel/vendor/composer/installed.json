@@ -8554,7 +8554,6 @@
         "nunomaduro/collision",
         "phar-io/manifest",
         "phar-io/version",
-        "php-webdriver/webdriver",
         "phpunit/php-code-coverage",
         "phpunit/php-file-iterator",
         "phpunit/php-invoker",

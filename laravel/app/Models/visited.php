@@ -18,12 +18,12 @@ class visited extends Model
         'berat_badan',
         'tinggi_badan', 
         'lingkar_kepala',
-        'lingkar_lengan',
+        'lingkat_lengan',
         'status_gizi',
         'asi_esklusif',
         'id_balita',
         'id_posyandu',
-        'id_petugasKader'
+        'id_petugas_kader'
     ];
 
     // Define relationship with Balita model (One-to-One)
@@ -32,6 +32,7 @@ class visited extends Model
         return $this->belongsTo(Balita::class, 'id_balita');
     }
 
+
     // Define relationship with Posyandu model (One-to-One)
     public function posyandu()
     {
@@ -39,8 +40,8 @@ class visited extends Model
     }
 
     // Define relationship with PetugasKader model (One-to-One)
-    public function petugasKader()
+    public function petugas()
     {
-        return $this->belongsTo(PetugasKader::class, 'id_petugasKader');
+        return $this->belongsTo(petugas::class, 'id_petugas_kader');
     }
 }
