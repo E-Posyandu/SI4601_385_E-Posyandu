@@ -21,7 +21,7 @@
                     <li><a class="dropdown-item" href="#!">Activity Log</a></li>
                     <li><hr class="dropdown-divider" /></li>
                     <li>
-    <form id="logout-form" action="{{ route('admin.logout') }}" method="POST" style="display: none;">
+    <form id="logout-form" action="{{ route('kader.logout') }}" method="POST" style="display: none;">
         @csrf
     </form>
     <a class="dropdown-item" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
