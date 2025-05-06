@@ -92,40 +92,38 @@
                             </td>
                             <td>
                                 <div class="dropdown">
-                                    <button class="btn btn-sm" type="button" data-bs-toggle="dropdown">
+                                    <button dusk="dropdown-toggle" class="btn btn-sm" type="button" data-bs-toggle="dropdown">
                                         <i class="fas fa-ellipsis-v"></i>
                                     </button>
                                     <ul class="dropdown-menu">
-<!-- 1. View - Redirect ke detail -->
-<li>
-    <a class="dropdown-item" href="{{ route('verifikasi-akun.show', $balita->id_balita) }}">
-        <i class="fas fa-eye me-2"></i> View
-    </a>
-</li>
+                                        <!-- View -->
+                                        <li>
+                                            <a dusk="view-button" class="dropdown-item" href="{{ route('verifikasi-akun.show', $balita->id_balita) }}">
+                                                <i class="fas fa-eye me-2"></i> View
+                                            </a>
+                                        </li>
 
-<!-- 2. Setujui - Update status -->
-<li>
-    <form action="{{ route('verifikasi-akun.update-status', $balita->id_balita) }}" method="POST">
-        @csrf
-        <input type="hidden" name="status" value="approved">
-        <button type="submit" class="dropdown-item text-success">
-            <i class="fas fa-check me-2"></i> Setujui
-        </button>
-    </form>
-</li>
+                                        <!-- Setujui -->
+                                        <li>
+                                            <form action="{{ route('verifikasi-akun.update-status', $balita->id_balita) }}" method="POST">
+                                                @csrf
+                                                <input type="hidden" name="status" value="approved">
+                                                <button dusk="approve-button" type="submit" class="dropdown-item text-success">
+                                                    <i class="fas fa-check me-2"></i> Setujui
+                                                </button>
+                                            </form>
+                                        </li>
 
-<!-- 3. Tolak - Update status -->
-<li>
-    <form action="{{ route('verifikasi-akun.update-status', $balita->id_balita) }}" method="POST">
-        @csrf
-        <input type="hidden" name="status" value="rejected">
-        <button type="submit" class="dropdown-item text-danger">
-            <i class="fas fa-times me-2"></i> Tolak
-        </button>
-    </form>
-</li>
-
-
+                                        <!-- Tolak -->
+                                        <li>
+                                            <form action="{{ route('verifikasi-akun.update-status', $balita->id_balita) }}" method="POST">
+                                                @csrf
+                                                <input type="hidden" name="status" value="rejected">
+                                                <button dusk="reject-button" type="submit" class="dropdown-item text-danger">
+                                                    <i class="fas fa-times me-2"></i> Tolak
+                                                </button>
+                                            </form>
+                                        </li>
                                     </ul>
                                 </div>
                             </td>
@@ -141,3 +139,4 @@
     </div>
 </div>
 @endsection
+
