@@ -24,7 +24,7 @@
                 <div class="card mb-4">
                     <div class="card-header d-flex justify-content-between align-items-center">
                         <span>Laporan Perkembangan</span>
-                        <a href="{{ route('report-perkembangan.index') }}" class="btn btn-primary btn-sm">+ Buat Laporan Baru</a>
+                        <a href="{{ route('report-perkembangan.index', ['id_balita' => $balita->id_balita]) }}" class="btn btn-primary btn-sm">+ Buat Laporan Baru</a>
                     </div>
                     <div class="card-body">
                         <table class="table table-bordered mb-0">

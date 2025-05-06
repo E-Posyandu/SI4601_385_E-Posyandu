@@ -30,6 +30,6 @@ class petugas extends Authenticatable
     // One petugas can have many jadwal
     public function jadwal()
     {
-        return $this->hasMany(Jadwal::class, 'id_petugasKader');
+        return $this->hasMany(Jadwal::class, 'id_petugas_kader');
     }
 }

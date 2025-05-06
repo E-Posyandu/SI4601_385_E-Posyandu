@@ -14,6 +14,9 @@ use App\Http\Controllers\eventUserController;
 use App\Http\Controllers\profileUserController;
 use App\Http\Controllers\ReportPerkembanganController;
 use App\Http\Controllers\VerifikasiController;
+use App\Http\Controllers\VisitedController;
+use App\Http\Controllers\PosyanduController;
+use App\Http\Controllers\KaderController;
 
 // AUTH
 use App\Http\Controllers\Auth\AuthKaderController;
@@ -36,6 +39,7 @@ Route::group(['prefix' => 'kader'], function () {
     Route::get('/register', [AuthKaderController::class, 'showRegistrationForm'])->name('kader.register');
     Route::post('/register', [AuthKaderController::class, 'register'])->name('kader.register.submit');
     Route::post('/logout', [AuthKaderController::class, 'logout'])->name('kader.logout');
+    Route::get('/dashboard', [KaderController::class, 'index'])->name('kader-side.dashboard');
 });
 
 // LOGIN USER
@@ -162,3 +166,28 @@ Route::prefix('jadwal-kegiatan')->group(function () {
 
 // Report Perkembangan Bayi
 Route::resource('report-perkembangan', ReportPerkembanganController::class);
+
+
+// Router Kunjungan 
+Route::prefix('visited')->group(function () {
+    Route::get('/', [VisitedController::class, 'index'])->name('visited.index');
+    Route::get('/create', [VisitedController::class, 'create'])->name('visited.create');
+    Route::post('/', [VisitedController::class, 'store'])->name('visited.store');
+    Route::get('/{id}/edit', [VisitedController::class, 'edit'])->name('visited.edit');
+    Route::put('/{id}', [VisitedController::class, 'update'])->name('visited.update');
+    Route::delete('/{id}', [VisitedController::class, 'destroy'])->name('visited.destroy');
+    Route::get('/{id}', [VisitedController::class, 'show'])->name('visited.show');
+});
+
+
+//Route Posyandu
+
+Route::prefix('posyandu')->group(function () {
+    Route::get('/', [PosyanduController::class, 'index'])->name('posyandu.index');
+    Route::get('/create', [PosyanduController::class, 'create'])->name('posyandu.create');
+    Route::post('/', [PosyanduController::class, 'store'])->name('posyandu.store');
+    Route::get('/{id}/edit', [PosyanduController::class, 'edit'])->name('posyandu.edit');
+    Route::put('/{id}', [PosyanduController::class, 'update'])->name('posyandu.update');
+    Route::delete('/{id}', [PosyanduController::class, 'destroy'])->name('posyandu.destroy');
+    Route::get('/{id}', [PosyanduController::class, 'show'])->name('posyandu.show');
+});

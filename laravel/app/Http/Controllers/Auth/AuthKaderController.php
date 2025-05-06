@@ -28,13 +28,14 @@ class AuthKaderController extends Controller
         if ($petugas && Hash::check($request->password, $petugas->password)) {
             Auth::login($petugas);
             $request->session()->regenerate();
-            return redirect()->intended('dashboard');
+            return redirect()->route('kader-side.dashboard');
         }
 
         return back()->withErrors([
             'email' => 'The provided credentials do not match our records.',
         ]);
     }
+
     
     public function showRegistrationForm()
     {
@@ -63,7 +64,7 @@ class AuthKaderController extends Controller
 
         Auth::login($petugas);
 
-        return redirect()->route('dashboard');
+        return redirect()->route('kader-side.dashboard');
     }
 
     public function logout(Request $request)
@@ -71,6 +72,6 @@ class AuthKaderController extends Controller
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect('/');
+        return redirect('/kader/login');
     }
 }

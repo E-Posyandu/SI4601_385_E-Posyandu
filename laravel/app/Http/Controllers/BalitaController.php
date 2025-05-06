@@ -108,4 +108,11 @@ class BalitaController extends Controller
         return view('admin-side.data-bayi.show', compact('balita', 'kunjungan', 'labels', 'berat', 'tinggi', 'lingkar'));
     }
 
+    public function kunjunganTerakhir()
+    {
+        return $this->hasOne(Visited::class, 'id_balita')
+                    ->latestOfMany('tanggal_penimbangan'); 
+    }
+
+
 }
