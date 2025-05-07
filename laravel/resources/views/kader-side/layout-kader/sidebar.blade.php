@@ -12,11 +12,11 @@
                         <img src="{{ asset('assets/user.png') }}" alt="Logo" style="height: 25px; margin-right: 8px;">
                         Akun Verifikasi
                     </a>
-                    <a class="nav-link {{ request()->routeIs('balita.index') ? 'active' : '' }}" href="{{ route('balita.index') }}">
+                    <a class="nav-link {{ request()->routeIs('Databalita.index') ? 'active' : '' }}" href="{{ route('Databalita.index') }}">
                         <img src="{{ asset('assets/Baby Feet.png') }}" alt="Logo" style="height: 20px; margin-right: 8px;">
                         Data Bayi
                     </a>
-                    <a class="nav-link {{ request()->routeIs('visited.index') ? 'active' : '' }}" href="{{ route('visited.index') }}">
+                    <a class="nav-link {{ request()->routeIs('kunjungan.index') ? 'active' : '' }}" href="{{ route('kunjungan.index') }}">
                         <img src="{{ asset('assets/healthcare.png') }}" alt="Logo" style="height: 20px; margin-right: 8px;">
                         Kunjungan
                     </a>

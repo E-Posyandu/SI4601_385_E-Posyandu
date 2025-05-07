@@ -17,6 +17,9 @@ use App\Http\Controllers\VerifikasiController;
 use App\Http\Controllers\VisitedController;
 use App\Http\Controllers\PosyanduController;
 use App\Http\Controllers\KaderController;
+use App\Http\Controllers\Kader\KunjunganController;
+use App\Http\Controllers\Kader\DatabalitaController;
+use App\Http\Controllers\Kader\ReportkunjunganController;
 
 // AUTH
 use App\Http\Controllers\Auth\AuthKaderController;
@@ -34,13 +37,39 @@ Route::post('/logout', [AdminController::class, 'logout'])->name('admin.logout')
 
 // LOGIN KADER
 Route::group(['prefix' => 'kader'], function () {
+    // Auth routes
     Route::get('/login', [AuthKaderController::class, 'showLoginForm'])->name('kader.login');
     Route::post('/login', [AuthKaderController::class, 'login'])->name('kader.login.submit');
     Route::get('/register', [AuthKaderController::class, 'showRegistrationForm'])->name('kader.register');
     Route::post('/register', [AuthKaderController::class, 'register'])->name('kader.register.submit');
     Route::post('/logout', [AuthKaderController::class, 'logout'])->name('kader.logout');
+
+    // Dashboard
     Route::get('/dashboard', [KaderController::class, 'index'])->name('kader-side.dashboard');
+
+    // Kunjungan routes
+    Route::prefix('kunjungan')->group(function () {
+        Route::get('/', [KunjunganController::class, 'index'])->name('kunjungan.index');
+        Route::get('/create', [KunjunganController::class, 'create'])->name('kunjungan.create');
+        Route::post('/', [KunjunganController::class, 'store'])->name('kunjungan.store');
+        Route::get('/{id}/edit', [KunjunganController::class, 'edit'])->whereNumber('id')->name('kunjungan.edit');
+        Route::put('/{id}', [KunjunganController::class, 'update'])->whereNumber('id')->name('kunjungan.update');
+        Route::delete('/{id}', [KunjunganController::class, 'destroy'])->whereNumber('id')->name('kunjungan.destroy');
+        Route::get('/{id}', [KunjunganController::class, 'show'])->whereNumber('id')->name('kunjungan.show');
+    });
+    Route::prefix('DataBalita')->group(function() {
+        Route::get('/', [DatabalitaController::class, 'index'])->name('Databalita.index');
+        Route::get('/create', [DatabalitaController::class, 'create'])->name('Databalita.create');
+        Route::post('/', [DatabalitaController::class, 'store'])->name('Databalita.store');
+        Route::get('/{id}', [DatabalitaController::class, 'show'])->name('Databalita.show');
+        Route::get('/{id}/edit', [DatabalitaController::class, 'edit'])->name('Databalita.edit');
+        Route::put('/{id}', [DatabalitaController::class, 'update'])->name('Databalita.update');
+        Route::delete('/{id}', [DatabalitaController::class, 'destroy'])->name('Databalita.destroy');
+    });
+
+    Route::resource('report-kunjungan', ReportkunjunganController::class);
 });
+
 
 // LOGIN USER
 Route::group(['prefix' => 'user'], function () {
