@@ -9,9 +9,15 @@ use Illuminate\Http\Request;
 class PosyanduController extends Controller
 {
     // Menampilkan semua data posyandu
-    public function index()
+    public function index(Request $request)
     {
-        $posyandus = Posyandu::with('admin')->get();
+        $keyword = $request->input('search');
+
+        $posyandus = Posyandu::with('admin')
+            ->when($keyword, function ($query) use ($keyword) {
+                $query->where('nama_posyandu', 'like', '%' . $keyword . '%');
+            })
+            ->get();
         return view('admin-side.posyandu.index', compact('posyandus'));
     }
 

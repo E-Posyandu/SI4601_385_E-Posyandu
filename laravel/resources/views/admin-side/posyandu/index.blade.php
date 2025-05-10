@@ -7,6 +7,13 @@
     <div class="container-fluid px-4 mt-4">
         <h3 class="mb-4">Data Posyandu</h3>
 
+        <form method="GET" action="{{ route('posyandu.index') }}" class="mb-3">
+            <div class="input-group">
+                <input type="text" name="search" class="form-control" placeholder="Cari nama posyandu..." value="{{ request('search') }}">
+                <button class="btn btn-primary" type="submit">Cari</button>
+            </div>
+        </form>
+
         {{-- Tombol Tambah --}}
         <div class="mb-3 text-end">
             <a href="{{ route('posyandu.create') }}" class="btn btn-success" dusk="tambah-posyandu">+ Tambah Posyandu</a>

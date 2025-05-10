@@ -7,13 +7,24 @@
     <div class="container-fluid px-4 mt-4">
         <h3 class="mb-4">Data Kunjungan Balita</h3>
 
-        {{-- Form Pencarian --}}
+        {{-- Form Pencarian dan Filter Tanggal --}}
         <form method="GET" action="{{ route('visited.index') }}" class="mb-3">
-            <div class="input-group">
-                <input type="text" name="search" class="form-control" placeholder="Cari nama balita..." value="{{ request('search') }}">
-                <button class="btn btn-primary" type="submit">Cari</button>
+            <div class="row g-2">
+                <div class="col-md-4">
+                    <input type="text" name="search" class="form-control" placeholder="Cari nama balita..." value="{{ request('search') }}">
+                </div>
+                <div class="col-md-3">
+                    <input type="date" name="tanggal_awal" class="form-control" value="{{ request('tanggal_awal') }}">
+                </div>
+                <div class="col-md-3">
+                    <input type="date" name="tanggal_akhir" class="form-control" value="{{ request('tanggal_akhir') }}">
+                </div>
+                <div class="col-md-2">
+                    <button class="btn btn-primary w-100" type="submit">Filter</button>
+                </div>
             </div>
         </form>
+
 
         {{-- Tombol Tambah Data --}}
         <div class="mb-3 text-end">

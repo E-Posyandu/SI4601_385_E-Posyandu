@@ -12,9 +12,26 @@ use App\Models\posyandu;
 class KunjunganController extends Controller
 { 
     // Tampilkan semua data visited
-    public function index()
+    public function index(Request $request)
     {
-        $visiteds = Visited::with('balita')->get();
+        $query = Visited::query();
+
+        // Filter pencarian nama balita
+        if ($request->filled('search')) {
+            $query->whereHas('balita', function ($q) use ($request) {
+                $q->where('nama_balita', 'like', '%' . $request->search . '%');
+            });
+        }
+
+        // Filter tanggal penimbangan
+        if ($request->filled('tanggal_awal') && $request->filled('tanggal_akhir')) {
+            $query->whereDate('tanggal_penimbangan', '>=', $request->tanggal_awal)
+                ->whereDate('tanggal_penimbangan', '<=', $request->tanggal_akhir);
+        }
+
+        // Ambil data lengkap dengan relasi
+        $visiteds = $query->with(['balita', 'posyandu', 'petugas'])->get();
+
         return view('kader-side.kunjungan.index', compact('visiteds'));
     }
 
